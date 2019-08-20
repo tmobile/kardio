@@ -1,0 +1,170 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<!DOCTYPE html>
+
+<html lang="en" ng-app="mainApp">
+<head>
+	<title>CCP Status Dashboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta content="utf-8" http-equiv="encoding">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico">
+
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/angular-tooltips.css">
+	<link rel="stylesheet" href="styles/nv.d3.min.css">
+	<link rel="stylesheet" href="styles/textAngular.css">
+	<link rel="stylesheet" href="styles/font-awesome.min.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/media.css">
+
+	<script type="text/javascript" src="scripts/properties/constants.js"></script>
+	<script type="text/javascript" src="scripts/config/config.js"></script>
+
+	<script type="text/javascript" src="scripts/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-animate.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-tooltips.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/d3.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/nv.d3.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angularjs-nvd3-directives.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/textAngular-rangy.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/textAngular-sanitize.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/textAngular.min.js"></script>
+
+	<script type="text/javascript" src="scripts/lib/dirPagination.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/controllers/dashboardController.js"></script>
+	<script type="text/javascript" src="scripts/controllers/statusHistoryController.js"></script>
+
+	<script type="text/javascript" src="scripts/services/httpService.js"></script>
+	<script type="text/javascript" src="scripts/services/httpInterceptor.js"></script>
+	<script type="text/javascript" src="scripts/services/callApiService.js"></script>
+	<script type="text/javascript" src="scripts/services/loginService.js"></script>
+
+	<script type="text/javascript" src="scripts/directives/componentTable.js"></script>
+	<script type="text/javascript" src="scripts/directives/historyTable.js"></script>
+	<script type="text/javascript" src="scripts/directives/messagePopup.js"></script>
+	<script type="text/javascript" src="scripts/directives/addMessage.js"></script>
+	<script type="text/javascript" src="scripts/directives/fieldFocus.js"></script>
+	<script type="text/javascript" src="scripts/directives/subscribe.js"></script>
+	<script type="text/javascript" src="scripts/directives/counterGraph.js"></script>
+	<script type="text/javascript" src="scripts/directives/loading.js"></script>
+</head>
+<body ng-controller="mainController" ng-init="pformGlobal = 'All'">
+	<div ng-include="'pages/header.html'"></div>
+	<div class="contents clearfix error-message-container" ng-show="showError">
+		<span class="error-message">{{errorMessage}}</span>
+		<div class="error-close-button glyphicon glyphicon-remove" ng-click="showError = !showError"></div>
+	</div>
+	<div class="contents row clearfix">
+		<div class="body main-content">
+			<div class="signup clearfix">	
+			<!--global message change-->
+			<div ng-controller="modalController" class="{{$root.counterMessage.length < 1 ? 'float-left' : 'col-md-12'}} static-message">
+					<a ng-if="$root.isSessionValid && $root.isAdminUser()" href="#{{modalName}}" ng-click="$event.preventDefault();openPop('counter')" role="button"
+								class="btn btn-xs btn-default float-left edit-msg-btn" id="counter-msg-btn" data-toggle="modal" title="Add/Edit Static Message Here">
+			      		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			      	</a>
+					<modal modal-handler="modalName" modal-body="body" modal-footer="footer" modal-header="Counter Messages" data-ng-click-right-button="myRightButton()"></modal>
+					<span class="message" ng-if="$root.counterMessage.length > 0" ng-bind-html="$root.counterMessage | trustAsHtml"></span>
+			    </div>
+		<!--global msg change ends here -->	
+		<div class="float-left">	
+	<input class ="radio-container" type="radio"  ng-model="pformGlobal" name="globalPlatform"  ng-click="RadioChange('All')" value ="All" style="margin:5px;" ng-checked="true">All</input>
+	<input class ="radio-container" type="radio"  ng-model="pformGlobal" name="globalPlatform"  ng-click="RadioChange('Mesos')" value="Mesos" style="margin:5px;">Mesos</input>
+	<input class ="radio-container" type="radio"  ng-model="pformGlobal" name="globalPlatform"  ng-click="RadioChange('K8s')" value="K8s" style="margin:5px;" >K8s</input>
+</div>	
+<div class="float-right">
+    	<label for="refresh" class="refresh-label">Refresh every</label>
+    	<select id="refresh" aria-label="Refresh every" ng-model="$root.timeInterval"  ng-change="changeInterval()" ng-init="$root.timeInterval = '300000'">
+    		<option value="120000">2 minutes</option>
+    		<option value="300000">5 minutes</option>
+    		<option value="600000">10 minutes</option>
+    		<option value="1800000">30 minutes</option>
+    	</select>
+    </div>
+				<counter-graph environment=""></counter-graph>
+				<div class="col-md-12 no-padding hide-on-low-res clearfix">
+					<div id="contactUsDiv" class="float-right" ng-include="'pages/contactUs.html'"></div>
+					<div class="text-block float-left">{{$root.props.applicationDescription}}</div>
+				</div>
+				<div class="col-md-12 no-padding clearfix">
+					<div id="timeDiv" class="float-left">
+						<span>Page Last Update : </span>
+						<span id="timeSpan"> {{($root.lastUpdatedTime | date : "MMM dd yyyy hh:mm:ss a UTC Z") + $root.lastUpdatedTime.toTimeString().substring($root.lastUpdatedTime.toTimeString().indexOf('('))}}</span>
+					</div>
+					<div id="infoDiv" class="float-right">
+						<div class="float-left">
+							<span class="status-icon up" tooltips tooltip-side="top" tooltip-template="Service operating Normally"></span>
+							<span class="status-text">  Good </span>
+						</div>
+						<div class="float-left">
+							<span class="status-icon warning" tooltips tooltip-side="top" tooltip-template="Service degradation"></span>
+							<span class="status-text">  Warning </span>
+						</div>
+						<div class="float-left">
+							<span class="status-icon down" tooltips tooltip-side="top" tooltip-template="Service disruption"></span>
+							<span class="status-text"> Error </span>
+						</div>
+						<div class="float-left">
+							<span class="status-icon disrupt" tooltips tooltip-side="top" tooltip-template="Information"></span>
+							<span class="status-text status-text"> Information </span>
+						</div>
+						<div class="float-left">
+							<span class="glyphicon glyphicon-minus" tooltips tooltip-side="top" tooltip-template="Service not available"></span>
+							<span class="status-text status-text-na"> Unavailable </span>
+						</div>
+					</div>
+				</div>
+  				<div class="navbar top-nav-bar clearfix">
+					<div class="navbar-header float-left">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#environment-navbar" aria-expanded="false">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse no-padding col-xs-12 col-sm-12 col-md-12 col-lg-12" id="environment-navbar">
+						<ul class="nav navbar-nav" ng-repeat="env in $root.envData">
+							<li class="nav-tabs {{$root.environment == env.environmentName ? 'active' : ''}}"><a ng-click="onTabSelected(env.environmentName)">{{env.environmentDesc}}</a></li>
+						</ul>
+					</div>
+					<div class="high-level-link">
+						<a href="#!/dashboard">Dashboard</a> | <a href="#!/statusHistory">History</a> | <a href="apidashboard.html">API Dashboard</a>
+					</div>
+				</div>
+				<div ui-view></div>
+				<div class="bottom-area col-md-12 no-padding show-on-low-res float-right clearfix">
+					<div id="contactUsDiv" ng-include="'pages/contactUs.html'"></div>
+				</div>
+  			</div>
+		</div>
+	</div>
+	<div class="backgroud-modal-div" id="loaderDiv" data-loading>
+		<img src="images/loading.gif" class="ajax-loader"/>
+	</div>
+	<div class="backgroud-modal-div" id="backgroudModalDiv" ng-show="showModalBgGnd"></div>
+	<div class="clearfix footer" ng-include="'pages/footer.html'"></div>
+</body>
+</html>

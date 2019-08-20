@@ -1,0 +1,165 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<!DOCTYPE html>
+
+<html lang="en" ng-app="loginApp">
+<head>
+	<title>CCP Status Dashboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico">
+	
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/media.css">
+	
+	<script type="text/javascript" src="scripts/config/config.js"></script>
+	<script type="text/javascript" src="scripts/properties/constants.js"></script>
+	
+	<script type="text/javascript" src="scripts/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-tooltips.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui.min.js"></script>
+	
+	<script type="text/javascript" src="scripts/login.js"></script>
+	
+<style>
+.container {
+	margin: 50px auto 100px;
+	max-width: 600px;
+	position: relative;
+	width: 100%;
+}
+
+.card {
+	background: #ffffff none repeat scroll 0 0;
+	border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	box-sizing: border-box;
+	padding: 70px 0 90px;
+	position: relative;
+	transition: all 0.3s ease 0s;
+}
+
+.card .title {
+	border-left: 5px solid #E20074;
+	color: #E20074;
+	font-size: 32px;
+	font-weight: 600;
+	margin: 0 0 25px;
+	padding: 10px 0 10px 50px;
+	position: relative;
+	text-transform: uppercase;
+	z-index: 1;
+}
+
+.card .input-container {
+	margin: 0 60px 40px;
+	position: relative;
+}
+
+.card .input-container input {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: 0 none;
+	font-size: 20px;
+	font-weight: 400;
+	height: 40px;
+	outline: medium none;
+	position: relative;
+	width: 100%;
+	z-index: 1;
+}
+.card .input-container input:-ms-input-placeholder{
+	color : #aaa;
+}
+.card .input-container input::placeholder {
+	color : #aaa;
+}
+.card .input-container .bar {
+	background: #757575 none repeat scroll 0 0;
+	bottom: 0;
+	height: 1px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+
+.card .button-container {
+	margin: 0 60px;
+	text-align: center;
+}
+
+.card .button-container input {
+	background: #E20074 none repeat scroll 0 0;
+	border: none;
+	border-radius: 5px;
+	height: 50px;
+	width: 100%;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 600;
+}
+</style>
+</head>
+<body ng-controller="loginController">
+    <div ng-include="'pages/header.html'"></div>
+
+	<div class="contents clearfix error-message-container" ng-show="showError">
+		<span class="error-message">{{errorMessage}}</span>
+		<div class="error-close-button glyphicon glyphicon-remove" ng-click="showError = !showError"></div>
+	</div>
+	<div class="contents row clearfix">
+		<div class="body main-content">
+			<div class="signup clearfix">
+				<div class="col-md-12 no-padding">
+					<div id="contactUsDiv" class="float-right" ng-include="'pages/contactUs.html'"></div>
+				</div>
+				
+				<div class="container">
+					<div class="card">
+						<h1 class="title">Login</h1>
+						
+						<div class="input-container">
+							<input placeholder="Username" type="text" id="username" name="username" ng-model="username" on-enter="doLogin()"/>
+							<div class="bar"></div>
+						</div>
+						<div class="input-container">
+							<input placeholder="Password" type="password" id="password" name="password" ng-model="password" on-enter="doLogin()"/>
+							<div class="bar"></div>
+						</div>
+						<div class="button-container">
+							<input type="submit" value="Login" ng-click="doLogin()" />
+						</div>
+
+					</div>
+				</div>
+				
+  			</div>
+		</div>
+	</div>
+	<div class="backgroud-modal-div" id="loaderDiv" data-loading>
+		<img src="images/loading.gif" class="ajax-loader"/>
+	</div>
+	<div class="backgroud-modal-div" id="backgroudModalDiv" ng-show="showModalBgGnd"></div>
+	<div class="clearfix footer" ng-include="'pages/footer.html'"></div>
+</body>
+</html>

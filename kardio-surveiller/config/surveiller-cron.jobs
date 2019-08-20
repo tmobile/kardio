@@ -1,0 +1,23 @@
+#Kardio - Status check - Every Minute
+* * * * * /surveiller/run.sh
+#Kardio - Counter - Every 10 minutes
+5,15,25,35,45,55 * * * * /surveiller/runLoadCounterData.sh
+#*/5 * * * * /surveiller/runLoadCounterData.sh
+#Kardio - Marathon Back - Every Hour
+3 * * * * /surveiller/runMarathonBackUp.sh
+#Kardio - Daily Purge Job
+46 23 * * * /surveiller/runPurgeData.sh
+#Kardio - API Dashboard data load Job
+10 * * * * /surveiller/runApiDashboardTask.sh
+#Kardio - TPS & Latency - Every 5 Minute
+*/5 * * * * /surveiller/runMesosTpsDataLoadTask.sh
+#Kardio - Kubernetes Back - Every Hour
+10 * * * * /surveiller/runKubernetesBackUp.sh
+#Kardio - K8s API Dashboard data load Job
+15 * * * * /surveiller/runKubeApiDashboardTask.sh
+#Kardio - TPS & Latency - Every hour
+10 * * * *  /surveiller/runK8sTpsDataLoadTask.sh
+#Kardio - TPS & Latency - Every hour
+5 * * * *  /surveiller/runK8sTpsLookupTask.sh
+
+

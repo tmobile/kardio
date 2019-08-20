@@ -1,0 +1,92 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<!DOCTYPE html>
+
+<html lang="en" ng-app="GDMApp">
+<head>
+	<title>CCP Status Dashboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="styles/angular-ui-switch.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/media.css">
+	<link rel="stylesheet" href="styles/select.min.css">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-route.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.22/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-tooltips.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui-switch.min.js"></script>
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.7/select.min.js"></script>
+	<script type="text/javascript" src="scripts/config/config.js"></script>
+	<script type="text/javascript" src="scripts/adminpage.js"></script>
+	
+	<script type="text/javascript" src="scripts/controllers/adminHealthCtrl.js"></script>
+	<script type="text/javascript" src="scripts/controllers/adminCompCtrl.js"></script>
+	<script type="text/javascript" src="scripts/controllers/adminSubscribeCtrl.js"></script>
+	<script type="text/javascript" src="scripts/controllers/adminEnvLockCtrl.js"></script>
+	<script type="text/javascript" src="scripts/controllers/adminCounterCtrl.js"></script>
+	<script type="text/javascript" src="scripts/controllers/adminAppNameCtrl.js"></script>
+	
+	<script type="text/javascript" src="scripts/services/httpService.js"></script>
+	<script type="text/javascript" src="scripts/services/httpInterceptor.js"></script>
+	<script type="text/javascript" src="scripts/services/callApiService.js"></script>
+	<script type="text/javascript" src="scripts/services/loginService.js"></script>
+	<script type="text/javascript" src="scripts/directives/loading.js"></script>
+	<script type="text/javascript" src="scripts/properties/constants.js"></script>
+		
+</head>
+<body ng-controller="adminPageController" style="min-width:1000px">
+	<div ng-include="'pages/header.html'"></div>
+	<div class="contents clearfix error-message-container" ng-show="showError">
+		<span class="error-message">{{errorMessage}}</span>
+		<div class="error-close-button glyphicon glyphicon-remove" ng-click="showError = !showError"></div>
+	</div>
+	<div class="contents row clearfix">
+		<div class="body admin-main-content">
+			<div class="signup clearfix">
+				<div class="col-md-12 no-padding contact-div">
+					<div class="float-left"><a href="index.html">Go to Dashboard</a></div>
+					<div id="contactUsDiv" class="float-right" ng-include="'pages/contactUs.html'"></div>
+				</div>
+				<div class="top-nav-bar clearfix">
+					<uib-tabset active="$root.adminActiveTab;">
+						<uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.tabTitle}}" ng-click="onTabSelected(tab.tabId)">
+						</uib-tab>
+					<uib-tabset>
+				</div>
+				<br/>
+				<div class="clearfix" ui-view></div>
+				<br/><br/>
+  			</div>
+		</div>
+	</div>
+	<div class="backgroud-modal-div" id="loaderDiv" data-loading>
+		<img src="images/loading.gif" class="ajax-loader"/>
+	</div>
+	<div class="backgroud-modal-div" id="backgroudModalDiv" ng-show="showModalBgGnd"></div>
+	<div class="clearfix footer" ng-include="'pages/footer.html'"></div>
+</body>
+</html>

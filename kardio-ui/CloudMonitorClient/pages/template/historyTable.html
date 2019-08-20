@@ -1,0 +1,143 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="histTable">
+<div class="headerTable">
+<table class="table table-bordered table-hover table-responsive table-condensed">
+	<thead>
+		<tr>
+			<th>
+			<span class="float-left" ng-if="historyTableCtrl.tableData.length > 0">
+				<span ng-if="historyTableCtrl.isCollapsed" ng-click="historyTableCtrl.isCollapsed = !historyTableCtrl.isCollapsed"
+					class="collapse-icon collapse-down" title="Expand"></span>
+				<span ng-if="!historyTableCtrl.isCollapsed" ng-click="historyTableCtrl.isCollapsed = !historyTableCtrl.isCollapsed"
+					class="collapse-icon collapse-up" title="Collapse"></span>
+			</span>{{$root.props.historyTableFirstCol}}</th>
+			<th>Platform</th>
+			<th ng-repeat="date in historyTableCtrl.tableHeader track by $index" class="search-header">
+				<span class="float-right" ng-if="$index == (historyTableCtrl.tableHeader.length - 1) && historyTableCtrl.tableData.length > 0">
+					<span ng-if="$index == (historyTableCtrl.tableHeader.length - 1) && historyTableCtrl.tableData.length > 0" 
+						ng-click="historyTableCtrl.filterVal = ''; historyTableCtrl.showFilter = !historyTableCtrl.showFilter"
+						class="glyphicon glyphicon-search float-right search-icon"></span>
+				</span>
+				<span>
+					<span style="padding: 2px">{{ date | date }}</span> <br> 
+					<span style="padding: 2px">West</span> 
+					<span>|</span> 
+					<span style="padding: 2px">East</span>
+				</span>
+			</th>
+		<tr>
+	</thead>
+	<tbody>
+		<tr ng-if="historyTableCtrl.tableData.length > 0">
+			<td colspan="8" ng-show="historyTableCtrl.showFilter && historyTableCtrl.tableData.length > 0"  class="no-padding">
+				<input type="text" ng-model="historyTableCtrl.filterVal"/>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="8" ng-show="historyTableCtrl.tableData.length == 0">
+				{{ historyTableCtrl.tableMessage }}
+			</td>
+		</tr>
+		<tr ng-if="historyTableCtrl.tableData.length > 0 && historyTableCtrl.isCollapsed" ng-click="historyTableCtrl.isCollapsed = !historyTableCtrl.isCollapsed">
+			<td colspan="8">
+				{{$root.props.clickToViewTxt}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div class="bodyTable animate-hide" ng-show="!historyTableCtrl.isCollapsed">
+<table class="table table-bordered table-hover table-responsive table-condensed">
+	<tbody>
+		<!--<tr ng-repeat="data in historyTableCtrl.tableData | filter : historyTableCtrl.displayParent == 'true' ? {'fullCompName': historyTableCtrl.filterVal} : {'componentName': historyTableCtrl.filterVal}"> -->
+			<tr pagination-id="historyTableCtrl.paginationId" data-dir-paginate="data in historyTableCtrl.tableData | filter : historyTableCtrl.displayParent == 'true' ? {'fullCompName': historyTableCtrl.filterVal} : {'componentName': historyTableCtrl.filterVal} |itemsPerPage:10:historyTableCtrl.paginationId">
+			<td>{{historyTableCtrl.displayParent == "true" ? data.fullCompName = data.parentComponentName + '/' + data.componentName : data.componentName}}</td>
+			<td>{{data.platform}}</td>
+			<td align="center" ng-repeat="date in historyTableCtrl.tableHeader">
+				<span style="padding: 3px" ng-if="( data.statusHistory | filter : {'statusTime': date} ).length > 0">
+					<span ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusWest == 'u'" class="status-icon up-percent up"
+						fancyTitle="Service operating Normally" up-time="{{( data.statusHistory | filter : {'statusTime': date} )[0].percentageUpTimeWest}}"></span>
+					
+					<a href="#history-failure-message-{{historyTableCtrl.tableIndex}}" ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusWest == 'd'" class="status-icon up-percent down"
+						fancyTitle="Service disruption" up-time="{{( data.statusHistory | filter : {'statusTime': date} )[0].percentageUpTimeWest}}" ng-click="$event.preventDefault();openMessage(data, date, 1)" data-toggle="modal"></a>
+						
+					<a href="#history-failure-message-{{historyTableCtrl.tableIndex}}" ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusWest == 'w'" class="status-icon up-percent warning"
+						fancyTitle="Service degradation" up-time="{{( data.statusHistory | filter : {'statusTime': date} )[0].percentageUpTimeWest}}" ng-click="$event.preventDefault();openMessage(data, date, 1)" data-toggle="modal"></a>
+			
+					<a href="#history-failure-message-{{historyTableCtrl.tableIndex}}" ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusWest == 'g'" class="status-icon up-percent disrupt"
+						fancyTitle="Service Unexpected behaviour" up-time="{{( data.statusHistory | filter : {'statusTime': date} )[0].percentageUpTimeWest}}" ng-click="$event.preventDefault();openMessage(data, date, 1)" data-toggle="modal"></a>
+						
+					<span ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusWest == null"
+						class="glyphicon glyphicon-minus" fancyTitle="Service not available"></span>
+				</span>
+				<span style="padding: 3px" ng-if="( data.statusHistory | filter : {'statusTime': date} ).length > 0">
+					<span ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusEast == 'u'" class="status-icon up-percent up"
+						fancyTitle="Service operating Normally" up-time="{{( data.statusHistory | filter : {'statusTime': date} )[0].percentageUpTimeEast}}"></span>
+					
+					<a href="#history-failure-message-{{historyTableCtrl.tableIndex}}" ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusEast == 'd'" class="status-icon up-percent down"
+						fancyTitle="Service disruption" up-time="{{( data.statusHistory | filter : {'statusTime': date} )[0].percentageUpTimeEast}}" ng-click="$event.preventDefault();openMessage(data, date, 2)" data-toggle="modal"></a>
+			
+					<a href="#history-failure-message-{{historyTableCtrl.tableIndex}}" ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusEast == 'w'" class="status-icon up-percent warning"
+						fancyTitle="Service degradation" up-time="{{( data.statusHistory | filter : {'statusTime': date} )[0].percentageUpTimeEast}}" ng-click="$event.preventDefault();openMessage(data, date, 2)" data-toggle="modal"></a>
+			
+					<a href="#history-failure-message-{{historyTableCtrl.tableIndex}}" ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusEast == 'g'" class="status-icon up-percent disrupt"
+						fancyTitle="Service Unexpected behaviour" up-time="{{( data.statusHistory | filter : {'statusTime': date} )[0].percentageUpTimeEast}}" ng-click="$event.preventDefault();openMessage(data, date, 2)" data-toggle="modal"></a>
+						
+					<span ng-if="( data.statusHistory | filter : {'statusTime': date} )[0].statusEast == null"
+						class="glyphicon glyphicon-minus" fancyTitle="Service not available"></span>
+				</span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<dir-pagination-controls pagination-id="historyTableCtrl.paginationId" boundary-links="true"  template-url="pages/dirPagination.tpl.html" ></dir-pagination-controls>
+</div>
+</div>
+
+<div id="history-failure-message-{{historyTableCtrl.tableIndex}}" class="modal msgModal" align="left">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Messages for {{historyTableCtrl.displayParent == "true" ? historyTableCtrl.popUpParentComponentName + '/' : ''}}{{ historyTableCtrl.popUpComponentName }}
+							on {{historyTableCtrl.date}}</h4>
+			</div>
+			<div class="modal-body">
+			<table class="show-message-table table table-hover table-responsive table-condensed">
+					<thead>
+						<tr>
+							<th ng-class="historyTableCtrl.selectedCls('messageDate')" ng-click="historyTableCtrl.changeSorting('messageDate')">Date Time</th>
+							<th ng-class="historyTableCtrl.selectedCls('componentName')" ng-click="historyTableCtrl.changeSorting('componentName')">Service</th>
+							<th ng-class="historyTableCtrl.selectedCls('message')" ng-click="historyTableCtrl.changeSorting('message')">Message</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-if="historyTableCtrl.compMsgdataHis == null || historyTableCtrl.compMsgdataHis.length == 0"><td colspan=3>No messages available</td></tr>
+						<tr ng-repeat="msg in historyTableCtrl.compMsgdataHis | orderBy:historyTableCtrl.sort.column:historyTableCtrl.sort.descending ">
+							<td>{{msg.messageDate}}</td>
+							<td>{{msg.componentName}}</td>
+							<td><span class="message-span" ng-bind-html="msg.message | trustAsHtml"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+           	<div class="modal-footer">
+            	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+		</div>
+	</div>
+</div>

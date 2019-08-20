@@ -1,0 +1,14 @@
+{
+	"status":"GDM000",
+   	"message":"Success",
+   	"responseContent":[
+   		{
+			"messageDate" : "2017-07-13T07:17:33.187Z",
+			"message" : "Google-Search-Infra is down"
+		},
+		{
+			"messageDate" : "2017-07-13T07:25:40.187Z",
+			"message" : "Google-Search-Infra is down. Opened ticket for this issue"
+		}
+	]
+}

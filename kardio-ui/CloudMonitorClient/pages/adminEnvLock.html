@@ -1,0 +1,174 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="col-md-12 no-padding">
+	<button class="btn btn-primary"  ng-hide="adminEnvLockCtrl.isAddEnvironment || adminEnvLockCtrl.isEditEnvironment"
+			ng-click="adminEnvLockCtrl.isAddEnvironment =! $scope.isAddEnvironment" style="margin-bottom: 20px;">Add Environment</button>
+	<div class="col-md-12 no-padding"  ng-show="adminEnvLockCtrl.isAddEnvironment && !adminEnvLockCtrl.isEditEnvironment">
+		<h3>Add Environment Details</h3>
+		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+    		<label for="environmentName">Environment Name</label>
+    		<span data-tooltip="The unique identifier used to internally identify the environment" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="environmentNameAdd" class="admin-from" ng-model="adminEnvLockCtrl.environment.environmentName">
+  		</div>
+  		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    		<label for="environmentDesc">Environment Display Name</label>
+    		<span data-tooltip="The name of the environment, as to be displayed in the Dashboard" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="environmentDescAdd" class="admin-from" ng-model="adminEnvLockCtrl.environment.environmentDesc">
+  		</div>
+  		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+    		<label for="marathonURL">Marathon URL</label>
+    		<span data-tooltip="The Marathon URL for the specific environment" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="marathonURLAdd" class="admin-from" placeholder="Marathon URL" ng-model="adminEnvLockCtrl.environment.marathonUrl">
+  		</div>
+  		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<label for="marathonUrl">Display Order</label>
+			<span data-tooltip="This number determines the ascending order in which the environment is displayed in the Dashboard page" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="displayOrderAdd" class="admin-form" placeholder="Display Order" ng-model="adminEnvLockCtrl.environment.displayOrder">
+		</div>
+  		<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-6 no-padding">
+			<label for="marathonUser">Marathon UserName</label>
+			<span data-tooltip="The Marathon user name for the environment" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="marathonUserAdd" class="admin-from" ng-model="adminEnvLockCtrl.environment.marathonUserName">
+		</div>
+  		<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-6">
+			<label for="marathonPwd">Marathon Password</label>
+			<span data-tooltip="The Marathon password for the environment" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="password" id="marathonPwdAdd" class="admin-from" ng-model="adminEnvLockCtrl.environment.marathonPassword">
+		</div>
+		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+    		<label for="k8sURL">K8s URL</label>
+    		<span data-tooltip="The URL of k8s for this environment" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="k8sURLAdd" class="admin-from" placeholder="K8s URL" ng-model="adminEnvLockCtrl.environment.k8sUrl">
+  		</div>
+		  <div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-6">
+			<label for="k8sUser">K8s UserName</label>
+			<span data-tooltip="The username for K8s of this environemnt" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="k8sUserAdd" class="admin-from" ng-model="adminEnvLockCtrl.environment.k8sUserName">
+		</div>
+  		<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-6 no-padding">
+			<label for="k8sPwd">K8s Password</label>
+			<span data-tooltip="The password for K8s of this environemnt" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="password" id="k8sPwdAdd" class="admin-from" ng-model="adminEnvLockCtrl.environment.k8sPassword">
+		</div>
+		<div class="from-group no-padding clearfix">
+			<button class="btn btn-danger float-right cancel-btn" ng-click="adminEnvLockCtrl.clearData()">Cancel</button>
+			<button class="btn btn-primary float-right" ng-click="adminEnvLockCtrl.addEnvironment(adminEnvLockCtrl.environment)">Add</button>
+		</div>
+		<br/>
+	</div>
+	<div class="col-md-12 no-padding" ng-show="adminEnvLockCtrl.isEditEnvironment">
+		<h3>Edit Environment Details</h3>
+		<div class="form-group col-md-6 no-padding">
+			<label for="envName">Environment Name</label>
+			<span data-tooltip="The Internal Uniquie Identifier used the environment" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="envName" class="admin-form" placeholder="Envronment Name" ng-model="adminEnvLockCtrl.environment.environmentName" ng-disabled="true">
+		</div>
+		<div class="form-group col-md-6">
+			<label for="envDesc">Environment Display Name</label>
+			<span data-tooltip="The Display Name of the environment that appears in the dashboard page" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="envDesc" class="admin-form" placeholder="Envronment Name" ng-model="adminEnvLockCtrl.environment.environmentDesc">
+		</div>
+		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+			<label for="marathonUrl">Marathon URL</label>
+			<span data-tooltip="The URL of marathon for this environment" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="marathonUrl" class="admin-form" placeholder="Marathon Url" ng-model="adminEnvLockCtrl.environment.marathonUrl">
+		</div>
+		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<label for="marathonUrl">Display Order</label>
+			<span data-tooltip="The Environments are ascendingly ordered using this number in the dashboard page" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="displayOrder" class="admin-form" placeholder="Display Order" ng-model="adminEnvLockCtrl.environment.displayOrder">
+		</div>
+		<div class="form-group col-md-12 no-padding">
+			<label for="envLock" class="float-left">Edit Marathon Password:</label>
+			<span data-tooltip="For editing marathon password of the selected environment, move the swich values 'Yes'." data-tooltip-position="right"><span class="help-tip"/></span>
+			<switch id="envLock" name="enabled" ng-model="adminEnvLockCtrl.isEditPassword" class="mySwitch greenSwitch"></switch>
+			({{(adminEnvLockCtrl.isEditPassword == 1)? 'Yes':'No'}})
+		</div>
+		<div class="form-group col-md-12 no-padding" ng-show="adminEnvLockCtrl.isEditPassword">
+			<div class="form-group col-xs-6 no-padding">
+				<label for="marathonUserName">Marathon Username</label>
+				<span data-tooltip="The username for Marathon of this environemnt" data-tooltip-position="right"><span class="help-tip"/></span>
+    			<input type="text" id="marathonUserName" class="admin-form" placeholder="Marathon User Name" ng-model="adminEnvLockCtrl.environment.marathonUserName">
+			</div>
+			<div class="form-group col-xs-6">
+				<label for="marathonPassword">Marathon Password</label>
+				<span data-tooltip="The password for Marathon of this environemnt" data-tooltip-position="right"><span class="help-tip"/></span>
+    			<input type="password" id="marathonPassword" class="admin-form" placeholder="Marathon Password" ng-model="adminEnvLockCtrl.environment.marathonPassword">
+			</div>
+		</div>
+		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+    		<label for="k8sURL">K8s URL</label>
+    		<span data-tooltip="The URL of k8s for this environment" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<input type="text" id="k8sURLAdd" class="admin-from" placeholder="K8s URL" ng-model="adminEnvLockCtrl.environment.k8sUrl">
+  		</div>
+		  <div class="form-group col-md-12 no-padding">
+			<label for="envLock" class="float-left">Edit K8s Password:</label>
+			<span data-tooltip="For editing marathon password of the selected environment, move the swich values 'Yes'." data-tooltip-position="right"><span class="help-tip"/></span>
+			<switch id="envLock" name="enabled" ng-model="adminEnvLockCtrl.isEditK8sPassword" class="mySwitch greenSwitch"></switch>
+			({{(adminEnvLockCtrl.isEditK8sPassword == 1)? 'Yes':'No'}})
+		</div>
+		  	<div class="form-group col-md-12 no-padding" ng-show="adminEnvLockCtrl.isEditK8sPassword">
+			<div class="form-group col-xs-6 no-padding">
+				<label for="k8sUserName">K8s Username</label>
+				<span data-tooltip="The username for K8s of this environemnt" data-tooltip-position="right"><span class="help-tip"/></span>
+    			<input type="text" id="k8sUserName" class="admin-form" placeholder="K8s User Name" ng-model="adminEnvLockCtrl.environment.k8sUserName">
+			</div>
+			<div class="form-group col-xs-6">
+				<label for="k8sPassword">K8s Password</label>
+				<span data-tooltip="The password for K8s of this environemnt" data-tooltip-position="right"><span class="help-tip"/></span>
+    			<input type="password" id="k8sPassword" class="admin-form" placeholder="K8s Password" ng-model="adminEnvLockCtrl.environment.k8sPassword">
+			</div>
+		</div>
+		<div class="form-group col-md-12 no-padding">
+			<label for="envLock" class="float-left">Lock Status Indicator:</label>
+			<span data-tooltip="Change the lock status to inactive to lock a specific environment" data-tooltip-position="right"><span class="help-tip"/></span>
+			<switch id="envLock" name="enabled" ng-model="adminEnvLockCtrl.environment.envLock" class="mySwitch"></switch>
+			({{(adminEnvLockCtrl.environment.envLock == 1)? 'In Active':'Active'}})
+		</div>
+		<div class="from-group no-padding clearfix">
+			<button class="btn btn-danger float-right cancel-btn" ng-click="adminEnvLockCtrl.clearData()">Cancel</button>
+			<button class="btn btn-primary float-right" ng-click="adminEnvLockCtrl.saveEnviromentData(adminEnvLockCtrl.environment, adminEnvLockCtrl.isEditPassword,isEditK8sPassword)">Save</button>
+			<br/><br/>
+		</div>
+	</div>
+
+	<div class="headerTable">
+		<table class="table table-bordered table-hover table-responsive table-condensed wide-table env-table">
+			<thead>
+				<tr>
+					<th ng-repeat="(i,th) in adminEnvLockCtrl.envTblHead" ng-click="adminEnvLockCtrl.changeSorting(i)">{{th}}<div ng-class="adminEnvLockCtrl.selectedCls(i)"></div></th>
+					<th class="non-clickable">Action</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div class="bodyTable env-table">
+		<table class="table table-bordered table-hover table-responsive table-condensed wide-table env-table">
+			<tbody>
+				<tr ng-repeat="env in adminEnvLockCtrl.envData | orderBy : adminEnvLockCtrl.sort.column : adminEnvLockCtrl.sort.descending">
+					<td>{{env.environmentName}}</td>
+					<td>{{env.environmentDesc}}</td>
+					<td>{{(env.envLock == 1)? 'In Active':'Active'}}</td>
+					<td>
+						<a class="btn btn-primary btn-xs" ng-click="adminEnvLockCtrl.editBtnClick(env)">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

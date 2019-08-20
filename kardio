@@ -1,0 +1,27 @@
+#!/bin/sh
+
+action=""
+if [ $1 = "build" ]; then
+  export MAVEN_OPTS="-DskipTests=true"
+  action="./build.sh"
+elif [ $1 = "test" ]; then
+  action="./build.sh"
+elif [ $1 = "build-docker" ]; then
+  action="./build_docker.sh"
+elif [ $1 = "start" ]; then
+  action="./start.sh"
+elif [ $1 = "start-docker" ]; then
+  action="./start_docker.sh"
+elif [ $1 = "stop" ]; then
+  action="./stop.sh"
+else
+    echo "Invalid action, please provide one of build|test|start|stop|build-docker|start-docker"
+    exit 1
+fi
+
+while read module; do
+  pushd .
+  cd "$module"
+  $action
+  popd
+done < modules.txt

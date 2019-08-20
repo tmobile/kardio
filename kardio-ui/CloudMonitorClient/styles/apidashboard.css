@@ -1,0 +1,93 @@
+@-webkit-keyframes chartjs-render-animation {
+	from {opacity: 0.99}
+	to {opacity: 1}
+}
+@keyframes chartjs-render-animation {
+	from {opacity: 0.99}
+	to {opacity: 1}
+}
+.chartjs-render-monitor {
+	-webkit-animation: chartjs-render-animation 0.001s;
+	animation: chartjs-render-animation 0.001s;
+}
+canvas {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	display: block;
+	height: 570px;
+	width: 1140px;
+}
+.btn{
+	padding: 4px 10px;
+}
+.top-bar{
+	text-align: center;
+	position: relative;
+}
+.api-dashboard-heading{
+	margin: 0;
+	width: calc(100% - 100px);
+}
+.api-dashboard-heading h3{
+	margin: 0 0 5px 0;
+}
+.uib-datepicker-popup.dropdown-menu{
+	right: auto;
+}
+.btn.btn-sm.btn-danger.uib-clear{
+    display: none;
+}
+#fromDate, #toDate{
+	width: 130px;
+	border-radius: 0;
+	padding: 5px;
+	text-align: center;
+}
+.form-label{
+	font-size: 13px;
+	margin-left: 10px;
+}
+.form-control, .date-picker-div button, .date-picker-div button{
+	height: 29px;
+	font-size: 13px;
+}
+.form-label{
+	margin:5px 5px 0;
+}
+.api-sel-wrp, .app-sel-wrp, .date-picker-div, .form-label{
+	padding-bottom: 5px;
+}
+.date-picker-div div{
+	float: left;
+}
+.child_list {
+	border-bottom: 2px solid lightgrey;
+}
+.ui-select-multiple.ui-select-bootstrap{
+	min-height: 30px;
+	border-radius: 0px;
+}
+.ui-select-bootstrap input.ui-select-search {
+	min-height: 26px;
+}
+.ui-select-container input{
+    border-color: #66afe9;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.075) inset,0 0 2px rgba(102,175,233,0.6);
+    outline: 0 none;
+}
+.ui-select-multiple.ui-select-bootstrap{
+	padding: 1px 0px 0px 1px;
+}
+.ui-select-multiple.ui-select-bootstrap .ui-select-match-item{
+	margin: 0 3px 0px 0;
+}
+.env-table th{
+	cursor: pointer;
+}
+.env-table th, .env-table td{
+	text-align: left;
+}
+.date-wrp, .app-sel-wrp, .api-sel-wrp{
+	margin-top: 8px;
+}

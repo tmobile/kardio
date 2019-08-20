@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21 21" width="100%" height="100%">
+	<polygon points="10.747 6.329 10.253 6.329 9.021 6.329 9.462 13.977 10.253 13.977 10.747 13.977 11.538 13.977 11.979 6.329 10.747 6.329" style="fill:#fff"/>
+	<path d="M11.042,20.993a10,10,0,1,1,10-10A10.011,10.011,0,0,1,11.042,20.993Z" transform="translate(-0.542 -0.493)" style="fill:#e71e27"/>
+	<path d="M11.042,1.493a9.5,9.5,0,1,1-9.5,9.5,9.511,9.511,0,0,1,9.5-9.5m0-1a10.5,10.5,0,1,0,10.5,10.5,10.5,10.5,0,0,0-10.5-10.5Z" transform="translate(-0.542 -0.493)" style="fill:#e71e27"/>
+	<circle cx="10.5" cy="15.421" r="1.626" style="fill:#fff"/>
+	<polygon points="10.744 5.214 10.256 5.214 9.042 5.214 9.476 13.214 10.256 13.214 10.744 13.214 11.524 13.214 11.958 5.214 10.744 5.214" style="fill:#fff"/>
+</svg>

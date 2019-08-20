@@ -1,0 +1,101 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="col-md-12 no-padding">
+	<button class="btn btn-primary" ng-click="adminSubscribeCtrl.isAddSubscription =! $scope.isAddSubscription" style="margin-bottom: 20px;">Add Subscription</button>
+	<div ng-show="adminSubscribeCtrl.isAddSubscription">
+		<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-3 no-padding">
+    		<label for="subscriptionType">Subscription Type</label>
+			<span data-tooltip="The various subscription methods available in the system" data-tooltip-position="right"><span class="help-tip"/></span>
+    		<select id="subscriptionType" class="admin-from" ng-model="adminSubscribeCtrl.subscription.subsciptionType">
+  				<option value="email">Email</option>
+ 				<option value="slack">Slack Web Hook URL</option>
+ 				<option value="slackChannel">Slack Channel Name</option>
+ 				<option value="oneConsoleWebhook">One Console Web Hook URL</option>
+			</select>
+  		</div>
+		<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-3 no-padding">
+			<label for="globalSubscriptionType">Global Subscription</label>
+			<span data-tooltip="Globally subscribe to status change alerts for all infra or application components, or both" data-tooltip-position="right"><span class="help-tip"/></span>
+			<select id="region" class="admin-from" ng-model="adminSubscribeCtrl.subscription.globalSubscriptionTypeId">
+				<option value="1">Infra</option>
+				<option value="2">App</option>
+				<option value="0">Both</option>
+			</select>
+		</div>
+		<div class="form-group col-xs-4 col-sm-4 col-md-6 col-lg-3 no-padding">
+		<label for="globalSubscriptionType">Platform</label>
+		<span data-tooltip="The platform for subscription." data-tooltip-position="right"><span class="help-tip"/></span>
+		<select id="region" class="admin-from" ng-model="adminSubscribeCtrl.subscription.platform">
+			<option value="Mesos">Mesos</option>
+			<option value="K8s">K8s</option>
+			<option value="All">All</option>
+		</select>
+	</div>
+		<div class="form-group col-xs-4 col-sm-4 col-md-6 col-lg-3 no-padding">
+			<label for="subscriptionEnvironment">Environment</label>
+			<span data-tooltip="The environment for global subscription " data-tooltip-position="right"><span class="help-tip"/></span>
+			<select id="subscriptionEnvironment" class="admin-from" ng-model="adminSubscribeCtrl.subscription.environmentId">
+				<option ng-repeat="env in adminSubscribeCtrl.envData" value="{{env.environmentId}}">{{env.environmentName}}</option>
+			</select>
+		</div>
+		<div class="form-group no-padding">
+			<label for="subsciptionVal" ng-show="adminSubscribeCtrl.subscription.subsciptionType == 'slack' || adminSubscribeCtrl.subscription.subsciptionType == 'email'">{{adminSubscribeCtrl.subscription.subsciptionType == 'slack'? 'Slack URL' : 'Email address'}}</label>
+			<label for="subsciptionVal" ng-show="adminSubscribeCtrl.subscription.subsciptionType == 'slackChannel'">Slack Channel Name</label>
+			<label for="subsciptionVal" ng-show="adminSubscribeCtrl.subscription.subsciptionType == 'oneConsoleWebhook'">One Console Web Hook URL</label>
+			<input type="text" id="subsVal" class="admin-from" ng-model="adminSubscribeCtrl.subscription.subsciptionVal">
+			<p class="note" ng-if="adminSubscribeCtrl.subscription.subsciptionType == 'slack'">
+				*To subscribe to a Slack channel. Create a URL for your channel using incoming webhook and paste the URL here. Access the incoming webhook page at:  <a a="" target="_webhook" href="https://t-mo.slack.com/apps/A0F7XDUAZ-incoming-webhooks">https://t-mo.slack.com/apps/A0F7XDUAZ-incoming-webhooks</a></p>
+			<p class="note" ng-if="adminSubscribeCtrl.subscription.subsciptionType == 'oneConsoleWebhook'">
+				To subscribe for a Web Hook. Please work with "Enterprise Service Assurance Desk" to create the web hook URL for your application and paste the URL here.</a></p>
+		</div>
+		<div class="from-group no-padding clearfix">
+			<button class="btn btn-danger float-right cancel-btn" ng-click="adminSubscribeCtrl.clearSubscription()">Cancel</button>
+			<button class="btn btn-primary float-right" ng-click="adminSubscribeCtrl.saveSubscription(adminSubscribeCtrl.subscription)">Save</button>
+		</div>
+		<br/>
+	</div>
+	<div class="headerTable component-table">
+		<table class="table table-bordered table-hover table-responsive table-condensed subscription-table">
+			<thead>
+				<tr>
+					<th ng-repeat="(i,th) in adminSubscribeCtrl.head" ng-click="adminSubscribeCtrl.changeSorting(i)">{{th}}<div ng-class="adminSubscribeCtrl.selectedCls(i)"></div></th>
+					<th class="non-clickable">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-if="adminSubscribeCtrl.subscriptionList.length == 0"><td colspan="5">No Global Subscription available</td></tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="bodyTable component-table-body">
+		<table class="table table-bordered table-hover table-responsive table-condensed subscription-table">
+			<tbody>
+				<tr ng-repeat="subscription in adminSubscribeCtrl.subscriptionList | orderBy : adminSubscribeCtrl.sort.column : adminSubscribeCtrl.sort.descending">
+					<td>{{subscription.subsciptionVal}}</td>
+					<td>{{subscription.subsciptionType.replace('email', 'Email').replace('slackChannel', 'Slack Channel').replace('slack', 'Slack Web Hook URL').replace('oneConsoleWebhook', 'One Console Web Hook URL')}}</td>
+					<td>{{subscription.globalSubscriptionType}}</td>
+					<td>{{subscription.platform}}</td>
+					<td>{{subscription.environmentName}}</td>
+					<td>
+						<a class="btn btn-danger btn-xs" ng-click="adminSubscribeCtrl.deleteSubscription(subscription.alertSubscriptionId)">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

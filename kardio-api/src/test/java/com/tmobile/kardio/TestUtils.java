@@ -1,0 +1,48 @@
+/*******************************************************************************
+ * Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License.  You may obtain a copy
+ * of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ ******************************************************************************/
+package com.tmobile.kardio;
+
+import static org.mockito.Mockito.when;
+
+import java.util.Date;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tmobile.kardio.bean.AppSession;
+import com.tmobile.kardio.service.AdminService;
+
+public class TestUtils {
+	public static String mockAppSession(AdminService adminService) {
+		String authToken = "auth_token";
+        AppSession session = new AppSession();
+        session.setAppSessionId(1);
+        session.setAuthToken(authToken);
+        session.setUserId("admin_id");
+        session.setUserName("admin");
+        session.setAdmin(true);
+        session.setSessionStartTime(new Date());
+        when(adminService.getAppSession(authToken)).thenReturn(session);
+		return authToken;
+	}
+    
+    public static String asJsonString(final Object obj) {
+        try {
+            final ObjectMapper mapper = new ObjectMapper();
+            return mapper.writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

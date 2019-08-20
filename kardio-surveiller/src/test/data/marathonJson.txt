@@ -1,0 +1,164 @@
+{
+  "apps": [
+    {
+      "id": "/test/dev/test-app-v1",
+      "cmd": null,
+      "args": null,
+      "user": null,
+      "env": {
+        "PROFILE": "dev",
+        "TVAULT_DNS": "test.com"
+      },
+      "instances": 1,
+      "cpus": 2,
+      "mem": 5120,
+      "disk": 0,
+      "gpus": 0,
+      "executor": "",
+      "constraints": [
+        [
+          "rack",
+          "CLUSTER",
+          "agent"
+        ]
+      ],
+      "uris": [],
+      "fetch": [],
+      "storeUrls": [],
+      "backoffSeconds": 1,
+      "backoffFactor": 1.15,
+      "maxLaunchDelaySeconds": 3600,
+      "container": {
+        "type": "DOCKER",
+        "volumes": [
+          {
+            "containerPath": "/usr/local/test/logs",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/usr/local/testapp/logs/networklogs",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/usr/local/testapp/logs/dashboardlogs",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/usr/local/apache-tomcat-8.5.15/logs",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/var/log/app",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/etc/httpd/logs",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/usr/local/testapp/logs/cache",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/usr/local/testapp/logs/smsnotification",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/usr/local/testapp/logs/audit",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          },
+          {
+            "containerPath": "/usr/local/testapp/logs/analytics",
+            "hostPath": "/var/log/app",
+            "mode": "RW"
+          }
+        ],
+        "docker": {
+          "image": "artifactory.test.com/test-local/dev/tst/tstapp-5",
+          "network": "BRIDGE",
+          "portMappings": [
+            {
+              "containerPort": 443,
+              "hostPort": 0,
+              "servicePort": 10131,
+              "protocol": "tcp",
+              "labels": {}
+            },
+            {
+              "containerPort": 80,
+              "hostPort": 0,
+              "servicePort": 10229,
+              "protocol": "tcp",
+              "labels": {}
+            }
+          ],
+          "privileged": false,
+          "parameters": [],
+          "forcePullImage": true
+        }
+      },
+      "healthChecks": [
+        {
+          "protocol": "TCP",
+          "portIndex": 0,
+          "gracePeriodSeconds": 300,
+          "intervalSeconds": 60,
+          "timeoutSeconds": 60,
+          "maxConsecutiveFailures": 3,
+          "ignoreHttp1xx": false
+        }
+      ],
+      "readinessChecks": [],
+      "dependencies": [],
+      "upgradeStrategy": {
+        "minimumHealthCapacity": 1,
+        "maximumOverCapacity": 1
+      },
+      "labels": {
+        "HTTP_PORT_IDX_0_NAME": "east.testapppromo.test.com",
+        "HAPROXY_SNI": "true"
+      },
+      "acceptedResourceRoles": null,
+      "ipAddress": null,
+      "version": "2018-10-12T13:52:32.745Z",
+      "residency": null,
+      "secrets": {},
+      "taskKillGracePeriodSeconds": null,
+      "ports": [
+        10131,
+        10229
+      ],
+      "portDefinitions": [
+        {
+          "port": 10131,
+          "protocol": "tcp",
+          "labels": {}
+        },
+        {
+          "port": 10229,
+          "protocol": "tcp",
+          "labels": {}
+        }
+      ],
+      "requirePorts": false,
+      "versionInfo": {
+        "lastScalingAt": "2018-10-12T13:52:32.745Z",
+        "lastConfigChangeAt": "2018-10-12T13:52:32.745Z"
+      },
+      "tasksStaged": 0,
+      "tasksRunning": 1,
+      "tasksHealthy": 1,
+      "tasksUnhealthy": 0,
+      "deployments": []
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "status": "GDM000",
+  "message": "Success",
+  "responseContent": {
+    "apiComponents": [
+      {
+        "componentName": "T-Mobile-API",
+        "recentEvent": false,
+        "region": [
+          {
+            "regionName": "East Region",
+            "regionStatus": "u"
+          },
+          {
+            "regionMessage": "Service is down",
+            "regionName": "West Region",
+            "regionStatus": "d"
+          }
+        ]
+      },
+      {
+        "componentName": "Google-Search-API",
+        "recentEvent": true,
+        "region": [
+          {
+            "regionMessage": "Service is degraded",
+            "regionName": "East Region",
+            "regionStatus": "w"
+          },
+          {
+            "regionMessage": "Service is not responding as expected",
+            "regionName": "West Region",
+            "regionStatus": "g"
+          }
+        ]
+      }
+    ],
+    "appComponents": [
+      {
+        "componentName": "T-Mobile-App",
+        "recentEvent": false,
+        "region": [
+          {
+            "regionName": "East Region",
+            "regionStatus": "u"
+          },
+          {
+            "regionMessage": "Service is down",
+            "regionName": "West Region",
+            "regionStatus": "d"
+          }
+        ]
+      },
+      {
+        "componentName": "Google-Search-Api",
+        "recentEvent": true,
+        "region": [
+          {
+            "regionMessage": "Service is degraded",
+            "regionName": "East Region",
+            "regionStatus": "w"
+          },
+          {
+            "regionMessage": "Service is not responding as expected",
+            "regionName": "West Region",
+            "regionStatus": "g"
+          }
+        ]
+      }
+    ],
+    "infraComponents": [
+      {
+        "componentName": "T-Mobile-Infra",
+        "recentEvent": false,
+        "region": [
+          {
+            "regionName": "East Region",
+            "regionStatus": "u"
+          },
+          {
+            "regionMessage": "Service is down",
+            "regionName": "West Region",
+            "regionStatus": "d"
+          }
+        ]
+      },
+      {
+        "componentName": "Google-Search-Infra",
+        "recentEvent": true,
+        "region": [
+          {
+            "regionMessage": "Service is degraded",
+            "regionName": "East Region",
+            "regionStatus": "w"
+          },
+          {
+            "regionMessage": "Service is not responding as expected",
+            "regionName": "West Region",
+            "regionStatus": "g"
+          }
+        ]
+      }
+    ]
+  }
+}

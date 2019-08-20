@@ -1,0 +1,323 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="{{componentTableCtrl.componentParentHeader != null ? 'gdmTable' : (componentTableCtrl.tableHeader[0] =='Services'?'serviceTable':'gdmTable') }}">
+<div class="headerTable">
+<table class="table table-bordered table-hover table-responsive table-condensed {{componentTableCtrl.componentParentHeader != null ? 'wide-table' : ''}}">
+	<thead>
+		<tr>
+			<th rowspan="2" ng-if="componentTableCtrl.componentParentHeader != null" ng-click="sort('parentComponentName')"> 
+				<span ng-if="componentTableCtrl.tableData.length > 0 && componentTableCtrl.isCollapsed"
+					ng-click="componentTableCtrl.isCollapsed = !componentTableCtrl.isCollapsed"
+					class="collapse-icon collapse-down float-left" title="Expand"></span>
+				<span ng-if="componentTableCtrl.tableData.length > 0 && !componentTableCtrl.isCollapsed"
+					ng-click="componentTableCtrl.isCollapsed = !componentTableCtrl.isCollapsed"
+					class="collapse-icon collapse-up float-left" title="Collapse"></span>
+				{{componentTableCtrl.componentParentHeader}}
+			</th>
+			<th rowspan="2" ng-click="sort('componentName')">
+				<span ng-if="componentTableCtrl.tableData.length > 0 && componentTableCtrl.isCollapsed"
+					ng-hide="componentTableCtrl.componentParentHeader != null" ng-click="componentTableCtrl.isCollapsed = !componentTableCtrl.isCollapsed"
+					class="collapse-icon collapse-down float-left" title="Expand"></span>
+				<span ng-if="componentTableCtrl.tableData.length > 0 && !componentTableCtrl.isCollapsed"
+					ng-hide="componentTableCtrl.componentParentHeader != null" ng-click="componentTableCtrl.isCollapsed = !componentTableCtrl.isCollapsed"
+					class="collapse-icon collapse-up float-left" title="Collapse"></span>
+				<span>{{componentTableCtrl.tableHeader[0]}}</span>
+			</th>
+			<!--
+			<th colspan="2" ng-if="componentTableCtrl.serviceContainer!= null" style="border-bottom-width: 1px;">
+				{{$root.props.NumberLabel}}
+				</th>-->
+				<th rowspan="2" ng-if="componentTableCtrl.serviceContainer!= null" style="width:6%;">
+					{{$root.props.ServicesLabel}}
+					</th>
+					<th rowspan="2" ng-if="componentTableCtrl.serviceContainer!= null">
+					{{$root.props.ContainersLabel}}
+					</th>		
+			<th rowspan="2" class="th-tps-latency" ng-click="sort('platform')" style="text-align:center!important;">
+				<span>{{componentTableCtrl.tableHeader[7]}}</span>
+			</th>
+			<th rowspan="2" class="th-tps-latency" style="text-align:center!important;">
+				<span>{{componentTableCtrl.tableHeader[5]}}</span>
+			</th>
+			<th rowspan="2" class="th-tps-latency" style="text-align:center!important;">
+				<br>
+				<span>{{componentTableCtrl.tableHeader[6]}} <br>
+				<span>(ms)</span></span>
+			</th>
+			<th colspan="2" style="text-align:center!important;border-bottom-width: 1px;">
+				{{componentTableCtrl.tableHeader[2]}}
+				</th>
+				<th colspan="2" style="text-align: center !important;border-bottom-width: 1px;">
+					&nbsp;&nbsp;&nbsp;{{componentTableCtrl.tableHeader[3]}}
+					</th>
+			<!--
+			<th class="hide-on-low-res">
+				<span>{{$root.props.availabilityPercHeader}}<!--<span>&nbsp;&nbsp;&nbsp;Status</span>
+				<!--
+				<span ng-click="$root.percentageTypeWest = 'Y'" class="{{$root.percentageTypeWest == 'Y'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[Y]</span>
+				<span ng-click="$root.percentageTypeWest = 'M'" class="{{$root.percentageTypeWest == 'M'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[M]</span>
+				<span ng-click="$root.percentageTypeWest = 'D'" class="{{$root.percentageTypeWest == 'D'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[D]</span>
+				</span>	
+			</th>
+			<th>Status</th>-->
+			<!--
+			<th>
+				<span>{{componentTableCtrl.tableHeader[2]}}</span>
+			</th>-->
+			<!--
+			<th class="hide-on-low-res">
+				<!--<span>EAST</span>
+				<span>{{$root.props.availabilityPercHeader}}<span><!--&nbsp;&nbsp;&nbsp;Status</span><br>
+				<span ng-click="$root.percentageTypeWest = 'Y'" class="{{$root.percentageTypeWest == 'Y'?'avai-sel-focus':'avai-sel'}}">[Y]</span>
+				<span ng-click="$root.percentageTypeWest = 'M'" class="{{$root.percentageTypeWest == 'M'?'avai-sel-focus':'avai-sel'}}">[M]</span>
+				<span ng-click="$root.percentageTypeWest = 'D'" class="{{$root.percentageTypeWest == 'D'?'avai-sel-focus':'avai-sel'}}">[D]</span>
+				</span>	
+			<!--	<span ng-if="componentTableCtrl.tableData.length > 0"
+					ng-click="componentTableCtrl.filterVal = ''; componentTableCtrl.showFilter = !componentTableCtrl.showFilter"
+					class="glyphicon glyphicon-search float-right search-icon show-on-low-res" event-focus="click" event-focus-id="searchBox{{componentTableCtrl.tableIndex}}"></span>
+			</th >-->
+			<!--<th>Status</th>-->
+			<th rowspan="2" class="hide-on-low-res search-header" >
+				<span>{{componentTableCtrl.tableHeader[4]}}</span>
+				<span ng-if="componentTableCtrl.tableData.length > 0"
+					ng-click="componentTableCtrl.filterVal = ''; componentTableCtrl.showFilter = !componentTableCtrl.showFilter"
+					class="glyphicon glyphicon-search float-right search-icon" event-focus="click" event-focus-id="searchBox{{componentTableCtrl.tableIndex}}"></span>
+			</th>
+		</tr>
+		<tr>
+			<!--
+			<th rowspan="2" ng-if="componentTableCtrl.serviceContainer!= null" style="width:6%;vertical-align: top;">
+					{{$root.props.ServicesLabel}}
+					</th>
+					<th rowspan="2" ng-if="componentTableCtrl.serviceContainer!= null" style="vertical-align: top;">
+					{{$root.props.ContainersLabel}}
+					</th>-->
+			<th style="width:7%!important;text-align:center;">{{componentTableCtrl.tableHeader[1]}}<br>
+				<span ng-click="$root.percentageTypeWest = 'Y'" class="{{$root.percentageTypeWest == 'Y'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[Y]</span>
+				<span ng-click="$root.percentageTypeWest = 'M'" class="{{$root.percentageTypeWest == 'M'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[M]</span>
+				<span ng-click="$root.percentageTypeWest = 'D'" class="{{$root.percentageTypeWest == 'D'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[D]</span>
+			</th>
+			<th style="width:7%!important;vertical-align: top;text-align:center;">{{componentTableCtrl.tableHeader[8]}}</th>
+			<th style="text-align:left;width:7%!important;">{{componentTableCtrl.tableHeader[1]}}<br>
+			<span ng-click="$root.percentageTypeEast = 'Y'" class="{{$root.percentageTypeEast == 'Y'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[Y]</span>
+			<span ng-click="$root.percentageTypeEast = 'M'" class="{{$root.percentageTypeEast == 'M'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[M]</span>
+			<span ng-click="$root.percentageTypeEast = 'D'" class="{{$root.percentageTypeEast == 'D'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[D]</span>
+            </th>
+			<th style="width:7%!important;vertical-align: top;text-align:center;">{{componentTableCtrl.tableHeader[8]}}</th>
+			</tr>
+		<!--<tr>
+			<td colspan="4"></td>
+			<th>
+				<span ng-click="$root.percentageTypeWest = 'Y'" class="{{$root.percentageTypeWest == 'Y'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[Y]</span>
+				<span ng-click="$root.percentageTypeWest = 'M'" class="{{$root.percentageTypeWest == 'M'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[M]</span>
+				<span ng-click="$root.percentageTypeWest = 'D'" class="{{$root.percentageTypeWest == 'D'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[D]</span>
+				</th>
+				<td></td>
+				<th>
+				<span ng-click="$root.percentageTypeWest = 'Y'" class="{{$root.percentageTypeWest == 'Y'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[Y]</span>
+				<span ng-click="$root.percentageTypeWest = 'M'" class="{{$root.percentageTypeWest == 'M'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[M]</span>
+				<span ng-click="$root.percentageTypeWest = 'D'" class="{{$root.percentageTypeWest == 'D'?'avai-sel-focus':'avai-sel'}}" style="text-align:left;">[D]</span>
+				</th>
+				<td colspan="2"></td>
+		</tr>-->
+	</thead>
+	<tbody>
+		<tr ng-if="componentTableCtrl.tableData.length > 0">
+			<td ng-if="componentTableCtrl.componentParentHeader != null" ng-show="componentTableCtrl.showFilter && componentTableCtrl.tableData.length > 0" class="no-padding">
+				<input type="text" ng-model="componentTableCtrl.filterParentVal"
+						id="{{(componentTableCtrl.componentParentHeader == null)? '' : ('searchBox' + componentTableCtrl.tableIndex)}}"/>
+			</td>
+			<td ng-show="componentTableCtrl.showFilter && componentTableCtrl.tableData.length > 0" class="no-padding">
+				<input type="text" ng-model="componentTableCtrl.filterVal"
+						id="{{(componentTableCtrl.componentParentHeader != null)? '' : ('searchBox' + componentTableCtrl.tableIndex)}}" />
+			</td>
+			<td  ng-show="componentTableCtrl.showFilter && componentTableCtrl.tableData.length > 0" class="no-padding">
+				<input type="text" ng-model="componentTableCtrl.filterPlatform"
+						id="{{(componentTableCtrl.componentParentHeader != null)? '' : ('searchBox' + componentTableCtrl.tableIndex)}}" />
+			</td>
+		</tr>
+		<tr ng-show="componentTableCtrl.tableData.length == 0">
+			<td colspan="{{componentTableCtrl.componentParentHeader != null ? 6 : 5}}">
+				{{ componentTableCtrl.tableEmptyMessage }}
+			</td>
+		</tr>
+		<tr ng-if="componentTableCtrl.tableData.length > 0 && componentTableCtrl.isCollapsed" ng-click="componentTableCtrl.isCollapsed = !componentTableCtrl.isCollapsed">
+			<td colspan="{{componentTableCtrl.componentParentHeader != null ? 6 : 5}}">
+				{{$root.props.clickToViewTxt}}
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div class="bodyTable animate-hide" ng-show="!componentTableCtrl.isCollapsed" >
+<table class="table table-bordered table-hover table-responsive table-condensed {{componentTableCtrl.componentParentHeader != null ? 'wide-table' : ''}}">
+	<tbody>
+		<tr pagination-id="componentTableCtrl.paginationId" data-dir-paginate="data in componentTableCtrl.tableData |filter : {'platform':$root.filterByPlatform}|orderBy:sortKey:reverse| filter : {'componentName': componentTableCtrl.filterVal, 'parentComponentName': componentTableCtrl.filterParentVal, 'platform': componentTableCtrl.filterPlatform}|itemsPerPage:10:componentTableCtrl.paginationId" >
+			<td ng-if="componentTableCtrl.componentParentHeader != null">{{data.parentComponentName}}</td>
+			<td>
+				<span ng-controller="subscribeCtrl" class="show-on-low-res float-left subscribe-icon">
+					<a href="#{{'sub-win-' + data.componentId}}" ng-click="$event.preventDefault();openSubscriptionWin('sub-win-', data.componentId, data.roles)"
+							role="button" class="btn btn-xs show-msg" data-toggle="modal">
+							<span class="glyphicon glyphicon-envelope" fancyTitle="Subscribe"></span>
+					</a>
+					<subscribe-modal modal-handler="modalName" modal-header="{{ data.componentName }}" component="{{ data.componentId }}"></message-modal>
+    			</span>{{ data.componentName }}
+			</td>
+			<!--changes for sum of containers and services
+			-->
+           <td ng-if="($root.filterByPlatform == '') && (componentTableCtrl.componentParentHeader == null) && (componentTableCtrl.serviceContainer | filter : {'componentId':data.componentId} : true).length > 0">
+				{{(componentTableCtrl.serviceContainer | filter : {"componentId":data.componentId} : true)[0].totalApis + (componentTableCtrl.serviceContainer | filter : {"componentId":data.componentId} : true)[1].totalApis}}</td>
+			<td ng-if="(componentTableCtrl.componentParentHeader == null) && ($root.filterByPlatform == '') && (componentTableCtrl.serviceContainer | filter : {'componentId':data.componentId} : true).length > 0">
+				{{(componentTableCtrl.serviceContainer | filter : {"componentId":data.componentId} : true)[0].totalContainers + (componentTableCtrl.serviceContainer | filter : {"componentId":data.componentId} : true)[1].totalContainers}}
+			</td>
+			<!--change ends-->
+			<td ng-if="($root.filterByPlatform != '') && (componentTableCtrl.componentParentHeader == null) && (componentTableCtrl.serviceContainer | filter : {'componentId':data.componentId} : true).length > 0">
+				{{(componentTableCtrl.serviceContainer | filter : {"componentId":data.componentId} : true)[0].totalApis}}</td>
+				<td ng-if="(componentTableCtrl.serviceContainer | filter : {'componentId':data.componentId} : true).length == 0" style="text-align:center!important;">
+				<span class="glyphicon glyphicon-minus" fancytitle="Not available"></span>
+			</td>
+			<td ng-if="($root.filterByPlatform != '') && (componentTableCtrl.componentParentHeader == null) && (componentTableCtrl.serviceContainer | filter : {'componentId':data.componentId} : true).length > 0">
+				{{(componentTableCtrl.serviceContainer | filter : {"componentId":data.componentId} : true)[0].totalContainers}}
+			</td>
+			<td ng-if="(componentTableCtrl.serviceContainer | filter : {'componentId':data.componentId} : true).length == 0" style="text-align:center!important;">
+				<span class="glyphicon glyphicon-minus" fancytitle="Not available"></span>
+			</td>
+			<td style="text-align:center;">
+				{{data.platform}}
+			</td>
+			<td ng-if="(componentTableCtrl.tpsLatency | filter : {'componentId':data.componentId} : true).length > 0" class="hide-on-low-res" style="text-align:center;">
+				{{( (componentTableCtrl.tpsLatency | filter : {"componentId":data.componentId} : true)[0].tpsValue | number : 2)}}
+			</td>
+			
+			<td ng-if="(componentTableCtrl.tpsLatency | filter : {'componentId':data.componentId} : true).length == 0" style="text-align:center;">
+				<span class="glyphicon glyphicon-minus" fancytitle="Not available"></span>
+			</td>
+			<td ng-if="(componentTableCtrl.tpsLatency | filter : {'componentId':data.componentId} : true).length > 0" class="hide-on-low-res" style="text-align:center;">
+				{{( (componentTableCtrl.tpsLatency | filter : {"componentId":data.componentId} : true)[0].latencyValue | number : 2)}}
+			</td>
+			<td ng-if="(componentTableCtrl.tpsLatency | filter : {'componentId':data.componentId} : true).length == 0" style="text-align:center;">
+				<span class="glyphicon glyphicon-minus" fancytitle="Not available"></span>
+			</td>
+			<td style="width:7%!important;text-align:center;!important">
+			<span style="text-align:right;!important"> 	
+			<span ng-if="(componentTableCtrl.percentageWest | filter : {'componentId':data.componentId} : true).length > 0" class="hide-on-low-res" style="text-align:left;!important">
+				{{( (componentTableCtrl.percentageWest | filter : {"componentId":data.componentId} : true)[0].availabilityPercentageWest | number : 2 ) + '%'}}
+			</span>
+			<span ng-if="(componentTableCtrl.percentageWest | filter : {'componentId':data.componentId} : true).length == 0">
+				<span class="glyphicon glyphicon-minus" fancytitle="Not available"></span>
+			</span>
+			</span>
+				</td>
+			<td ng-if="( data.region | filter : {'regionName': 'West Region'} ).length > 0" style="text-align:center;">
+			    <span>
+			       	<span ng-if="( data.region | filter : {'regionName': 'West Region'} )[0].regionStatus == 'u'"  class="status-icon up"
+			    			fancyTitle="Service operating Normally"></span>
+
+					<span ng-if="( data.region | filter : {'regionName': 'West Region'} )[0].regionStatus == 'd'" class="status-icon down"
+	       					fancyTitle="Service disruption"></span>
+              
+					<span ng-if="( data.region | filter : {'regionName': 'West Region'} )[0].regionStatus == 'w'" class="status-icon warning"
+	       					fancyTitle="Service degradation"></span>
+
+					<span ng-if="( data.region | filter : {'regionName': 'West Region'} )[0].regionStatus == 'g'" class="status-icon disrupt"
+	       					fancyTitle="Information"></span>
+			    </span>
+	       		<span ng-controller="addMessageCtrl" ng-if="( data.region | filter : {'regionName': 'West Region'} )[0].recentEvent == true">
+					<message-modal modal-handler="modalName" modal-body="body" modal-footer="footer"
+							modal-header="{{ data.componentName }}" component="{{ data.componentId }}" region="1" component-roles="data.roles"></message-modal>
+					<a href="#{{modalName}}" ng-click="$event.preventDefault();openAddMessage(1, data.componentId)" role="button" class="btn btn-xs show-msg" data-toggle="modal">
+      					<span class="glyphicon glyphicon-envelope"></span>
+      				</a>
+    			</span>
+				</td>
+			<td ng-if="( data.region | filter : {'regionName': 'West Region'} ).length == 0" style="text-align:center;">
+				<span class="glyphicon glyphicon-minus" fancyTitle="Service not available"></span>
+			</td>
+			<!--
+			<td ng-if="( data.region | filter : {'regionName': 'East Region'} ).length > 0">
+			    <span>
+			    	<span ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].regionStatus == 'u'" class="status-icon up"
+			    			fancyTitle="Service operating Normally"></span>
+
+					<span ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].regionStatus == 'd'"  class="status-icon down"
+	       					fancyTitle="Service disruption"></span>
+
+					<span ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].regionStatus == 'w'" class="status-icon warning"
+	       					fancyTitle="Service degradation"></span>
+
+					<span ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].regionStatus == 'g'" class="status-icon disrupt"
+	       					fancyTitle="Information"></span>
+	       		</span>
+
+	       		<span ng-controller="addMessageCtrl" ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].recentEvent == true">
+					<message-modal modal-handler="modalName" modal-body="body" modal-footer="footer"
+							modal-header="{{ data.componentName }}" component="{{ data.componentId }}" region="W" component-roles="data.roles"></message-modal>
+					<a href="#{{modalName}}" ng-click="$event.preventDefault();openAddMessage(2, data.componentId)" role="button" class="btn btn-xs show-msg" data-toggle="modal" align="right">
+      					<span class="glyphicon glyphicon-envelope"></span>
+      				</a>
+    			</span>
+			</td>
+			<td ng-if="( data.region | filter : {'regionName': 'East Region'} ).length == 0">
+				<span class="glyphicon glyphicon-minus" fancyTitle="Service not available"></span>
+			</td>-->
+			<td style="width:7%!important;text-align:center;!important">
+			<span style="text-align:center;"> 
+			<span ng-if="(componentTableCtrl.percentageEast | filter : {'componentId':data.componentId} : true).length > 0" class="hide-on-low-res" style="text-align:right;">
+				{{( (componentTableCtrl.percentageEast | filter : {"componentId":data.componentId} : true)[0].availabilityPercentageEast | number : 2 ) + '%'}}
+			</span>
+			<span ng-if="(componentTableCtrl.percentageEast | filter : {'componentId':data.componentId} : true).length == 0">
+				<span class="glyphicon glyphicon-minus" fancytitle="Not available"></span>
+			</span>
+			</span>
+			</td>
+			<td ng-if="( data.region | filter : {'regionName': 'East Region'} ).length > 0" style="text-align:center;">
+			    <span>
+			       	<span ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].regionStatus == 'u'"  class="status-icon up"
+			    			fancyTitle="Service operating Normally"></span>
+
+					<span ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].regionStatus == 'd'" class="status-icon down"
+	       					fancyTitle="Service disruption"></span>
+
+					<span ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].regionStatus == 'w'" class="status-icon warning"
+	       					fancyTitle="Service degradation"></span>
+
+					<span ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].regionStatus == 'g'" class="status-icon disrupt"
+	       					fancyTitle="Information"></span>
+			    </span>
+	       		<span ng-controller="addMessageCtrl" ng-if="( data.region | filter : {'regionName': 'East Region'} )[0].recentEvent == true">
+					<message-modal modal-handler="modalName" modal-body="body" modal-footer="footer"
+							modal-header="{{ data.componentName }}" component="{{ data.componentId }}" region="2" component-roles="data.roles"></message-modal>
+					<a href="#{{modalName}}" ng-click="$event.preventDefault();openAddMessage(1, data.componentId)" role="button" class="btn btn-xs show-msg" data-toggle="modal">
+      					<span class="glyphicon glyphicon-envelope"></span>
+      				</a>
+    			</span>
+					</td>
+			<td ng-if="( data.region | filter : {'regionName': 'East Region'} ).length == 0" style="text-align:center;">
+				<span class="glyphicon glyphicon-minus" fancyTitle="Service not available"></span>
+			</td>
+			<td class="hide-on-low-res" style="width:9%;">
+				<span ng-controller="subscribeCtrl">
+					<a href="#{{'sub-win-' + data.componentId}}" ng-click="$event.preventDefault();openSubscriptionWin('sub-win-', data.componentId, data.roles)"
+							role="button" class="btn btn-xs show-msg" data-toggle="modal">Subscribe</a>
+					<subscribe-modal modal-handler="modalName" modal-header="{{ data.componentName }}" component="{{ data.componentId }}"></message-modal>
+    			</span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<dir-pagination-controls pagination-id="componentTableCtrl.paginationId" boundary-links="true"  template-url="pages/dirPagination.tpl.html" ></dir-pagination-controls>
+</div>
+</div>

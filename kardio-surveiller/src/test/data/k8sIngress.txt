@@ -1,0 +1,54 @@
+{
+    "kind": "IngressList",
+    "apiVersion": "extensions/v1beta1",
+    "metadata": {
+        "selfLink": "/apis/extensions/v1beta1/namespaces/test-dev-test-dev/ingresses",
+        "resourceVersion": "61380807"
+    },
+    "items": [
+        {
+            "metadata": {
+                "name": "dev.chatbot.test.com",
+                "namespace": "test-dev-test-dev",
+                "selfLink": "/apis/extensions/v1beta1/namespaces/test-dev-test-dev/ingresses/dev.chatbot.kube.t-mobile.com",
+                "uid": "2b49b476-2ea3-11e9-b28c-0ad77ed97a74",
+                "resourceVersion": "55287935",
+                "generation": 1,
+                "creationTimestamp": "2019-02-12T08:49:55Z",
+                "annotations": {
+                    "external-dns.alpha.kubernetes.io/hostname": "dev.chatbot.test.com",
+                    "external-dns.alpha.kubernetes.io/target": "intdev-test-k8s-ngx-ing-276921438.test.amazonaws.com",
+                    "kubernetes.io/ingress.class": "nginx-internal"
+                },
+                "labels": {
+                	"release": "1.0.0"
+                }
+            },
+            "spec": {
+                "rules": [
+                    {
+                        "host": "dev.chatbot.test.com",
+                        "http": {
+                            "paths": [
+                                {
+                                    "path": "/",
+                                    "backend": {
+                                        "serviceName": "chatbot",
+                                        "servicePort": "chatbot-test-api"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "loadBalancer": {
+                    "ingress": [
+                        {}
+                    ]
+                }
+            }
+        }
+   ]
+}

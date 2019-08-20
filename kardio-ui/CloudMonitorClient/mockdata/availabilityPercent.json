@@ -1,0 +1,2166 @@
+{
+	"status": "GDM000",
+	"message": "Success",
+	"responseContent": [
+		{
+			"componentId": 1,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 2,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 3,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 4,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 5,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 6,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 7,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 8,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 9,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 10,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 11,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 12,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 13,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 14,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 15,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 16,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 25,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 26,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 27,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 28,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 29,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 30,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 31,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 32,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 33,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 34,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 36,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 37,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 38,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 39,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 40,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 41,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 42,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 43,
+			"availabilityPercentageWest": 98
+		},
+		{
+			"componentId": 44,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 45,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 46,
+			"availabilityPercentageWest": 89.133065
+		},
+		{
+			"componentId": 47,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 48,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 49,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 50,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 51,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 52,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 53,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 54,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 55,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 56,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 57,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 58,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 59,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 60,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 61,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 62,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 63,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 64,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 65,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 66,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 67,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 68,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 69,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 70,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 71,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 72,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 73,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 74,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 75,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 76,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 77,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 78,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 79,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 80,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 81,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 82,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 84,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 85,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 86,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 87,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 88,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 89,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 90,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 91,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 92,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 93,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 94,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 95,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 96,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 97,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 98,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 99,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 100,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 101,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 102,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 103,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 104,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 105,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 106,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 107,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 108,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 109,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 110,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 112,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 113,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 114,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 115,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 116,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 117,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 118,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 119,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 120,
+			"availabilityPercentageWest": 98.754375
+		},
+		{
+			"componentId": 121,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 122,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 125,
+			"availabilityPercentageWest": 0.35
+		},
+		{
+			"componentId": 126,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 127,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 129,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 130,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 131,
+			"availabilityPercentageWest": 99.382778
+		},
+		{
+			"componentId": 132,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 133,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 134,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 135,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 136,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 137,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 138,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 139,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 140,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 141,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 142,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 143,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 144,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 145,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 146,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 147,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 148,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 149,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 150,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 151,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 153,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 154,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 155,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 156,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 157,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 158,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 159,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 161,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 162,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 163,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 164,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 165,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 166,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 167,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 168,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 169,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 170,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 171,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 172,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 173,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 174,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 176,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 177,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 178,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 179,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 180,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 181,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 182,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 183,
+			"availabilityPercentageWest": 91.72
+		},
+		{
+			"componentId": 184,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 185,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 186,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 187,
+			"availabilityPercentageWest": 80.196488
+		},
+		{
+			"componentId": 206,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 207,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 208,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 209,
+			"availabilityPercentageWest": 98.68
+		},
+		{
+			"componentId": 210,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 211,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 212,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 214,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 215,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 216,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 217,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 218,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 219,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 220,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 221,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 222,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 223,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 224,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 226,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 227,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 228,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 229,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 230,
+			"availabilityPercentageWest": 94.345
+		},
+		{
+			"componentId": 231,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 232,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 233,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 234,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 235,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 236,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 239,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 240,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 241,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 242,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 243,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 246,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 247,
+			"availabilityPercentageWest": 75.63
+		},
+		{
+			"componentId": 248,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 249,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 250,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 251,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 254,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 255,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 256,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 257,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 258,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 259,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 260,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 263,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 264,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 265,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 266,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 268,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 269,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 270,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 272,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 273,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 274,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 275,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 276,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 277,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 278,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 279,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 281,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 282,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 283,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 284,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 286,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 287,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 288,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 289,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 291,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 292,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 293,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 294,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 296,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 297,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 298,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 299,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 300,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 302,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 303,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 304,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 305,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 308,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 309,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 310,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 311,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 312,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 313,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 314,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 315,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 316,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 317,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 318,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 319,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 321,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 322,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 323,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 324,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 325,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 327,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 329,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 330,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 331,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 333,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 334,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 335,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 337,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 339,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 340,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 341,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 342,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 343,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 344,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 345,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 346,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 347,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 348,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 351,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 352,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 353,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 354,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 355,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 356,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 357,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 359,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 360,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 361,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 362,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 363,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 364,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 366,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 367,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 368,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 369,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 370,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 371,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 372,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 373,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 374,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 375,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 376,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 377,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 378,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 379,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 381,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 382,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 383,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 384,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 385,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 386,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 387,
+			"availabilityPercentageWest": 99.17
+		},
+		{
+			"componentId": 409,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 417,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 419,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 424,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 427,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 429,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 432,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 440,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 441,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 442,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 443,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 445,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 446,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 447,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 450,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 452,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 454,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 455,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 456,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 457,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 458,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 463,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 465,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 466,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 467,
+			"availabilityPercentageWest": 99.9475
+		},
+		{
+			"componentId": 469,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 470,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 471,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 472,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 473,
+			"availabilityPercentageWest": 68.89
+		},
+		{
+			"componentId": 474,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 475,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 476,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 477,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 478,
+			"availabilityPercentageWest": 50
+		},
+		{
+			"componentId": 479,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 480,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 481,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 482,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 483,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 484,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 485,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 486,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 487,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 488,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 489,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 490,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 491,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 492,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 493,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 494,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 495,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 496,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 500,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 502,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 503,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 504,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 505,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 506,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 508,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 510,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 511,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 512,
+			"availabilityPercentageWest": 95.07
+		},
+		{
+			"componentId": 513,
+			"availabilityPercentageWest": 96.11
+		},
+		{
+			"componentId": 514,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 515,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 517,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 518,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 519,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 520,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 521,
+			"availabilityPercentageWest": 48.204286
+		},
+		{
+			"componentId": 522,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 523,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 524,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 525,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 526,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 527,
+			"availabilityPercentageWest": 50.806
+		},
+		{
+			"componentId": 528,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 530,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 534,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 535,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 536,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 537,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 538,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 539,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 540,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 541,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 542,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 543,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 544,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 545,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 546,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 548,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 549,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 551,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 552,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 553,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 554,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 555,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 556,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 557,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 558,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 559,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 560,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 561,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 562,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 563,
+			"availabilityPercentageWest": 7.486
+		},
+		{
+			"componentId": 564,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 565,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 566,
+			"availabilityPercentageWest": 41.6
+		},
+		{
+			"componentId": 567,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 568,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 569,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 570,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 571,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 572,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 573,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 574,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 575,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 576,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 577,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 581,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 582,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 583,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 584,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 585,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 587,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 588,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 589,
+			"availabilityPercentageWest": 24.9825
+		},
+		{
+			"componentId": 590,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 591,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 592,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 593,
+			"availabilityPercentageWest": 99.895
+		},
+		{
+			"componentId": 594,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 595,
+			"availabilityPercentageWest": 51.81
+		},
+		{
+			"componentId": 596,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 597,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 598,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 599,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 600,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 601,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 602,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 603,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 604,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 605,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 606,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 607,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 608,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 609,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 610,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 611,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 612,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 615,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 616,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 617,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 618,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 619,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 620,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 621,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 622,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 623,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 624,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 625,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 626,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 627,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 628,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 629,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 630,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 631,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 632,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 633,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 634,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 635,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 636,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 637,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 638,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 639,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 640,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 641,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 642,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 643,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 644,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 645,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 646,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 647,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 648,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 649,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 650,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 651,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 652,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 653,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 655,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 656,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 658,
+			"availabilityPercentageWest": 99.93
+		},
+		{
+			"componentId": 659,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 660,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 661,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 662,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 663,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 664,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 665,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 666,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 667,
+			"availabilityPercentageWest": 0
+		},
+		{
+			"componentId": 668,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 670,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 671,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 672,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 673,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 674,
+			"availabilityPercentageWest": 87.64
+		},
+		{
+			"componentId": 675,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 676,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 677,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 678,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 679,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 680,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 681,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 682,
+			"availabilityPercentageWest": 100
+		},
+		{
+			"componentId": 683,
+			"availabilityPercentageWest": 100
+		}
+	]
+}

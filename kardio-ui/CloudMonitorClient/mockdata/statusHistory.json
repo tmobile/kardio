@@ -1,0 +1,294 @@
+{
+  "status": "GDM000",
+  "message": "Success",
+  "responseContent": {
+    "appHistory": [
+      {
+        "componentName": "T-Mobile-App",
+        "statusHistory": [
+          {
+            "statusTime": "2017-07-09",
+            "statusEast": "u",
+            "statusWest": "d",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-08",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 1001,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-07",
+            "statusEast": "d",
+            "statusWest": "w",
+            "percentageUpTimeEast": 221,
+            "percentageUpTimeWest": 55
+          },
+          {
+            "statusTime": "2017-07-06",
+            "statusEast": "d",
+            "statusWest": "u",
+            "percentageUpTimeEast": 661,
+            "percentageUpTimeWest": 77
+          },
+          {
+            "statusTime": "2017-07-05",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 301,
+            "percentageUpTimeWest": 34
+          },
+          {
+            "statusTime": "2017-07-04",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 86,
+            "percentageUpTimeWest": 99
+          }
+        ]
+      },
+      {
+        "componentName": "Google-Search-App",
+        "statusHistory": [
+          {
+            "statusTime": "2017-06-30",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-06-29",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-07",
+            "statusEast": "w",
+            "statusWest": "d",
+            "percentageUpTimeEast": 22,
+            "percentageUpTimeWest": 55
+          },
+          {
+            "statusTime": "2017-07-06",
+            "statusEast": "d",
+            "statusWest": "u",
+            "percentageUpTimeEast": 66,
+            "percentageUpTimeWest": 77
+          },
+          {
+            "statusTime": "2017-07-05",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 30,
+            "percentageUpTimeWest": 34
+          },
+          {
+            "statusTime": "2017-07-04",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 86,
+            "percentageUpTimeWest": 99
+          }
+        ]
+      }
+    ],
+    "infraHistory": [
+      {
+        "componentName": "T-Mobile-Infra",
+        "statusHistory": [
+          {
+            "statusTime": "2017-07-09",
+            "statusEast": "u",
+            "statusWest": "d",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-08",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 1001,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-07",
+            "statusEast": "d",
+            "statusWest": "w",
+            "percentageUpTimeEast": 221,
+            "percentageUpTimeWest": 55
+          },
+          {
+            "statusTime": "2017-07-06",
+            "statusEast": "d",
+            "statusWest": "u",
+            "percentageUpTimeEast": 661,
+            "percentageUpTimeWest": 77
+          },
+          {
+            "statusTime": "2017-07-05",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 301,
+            "percentageUpTimeWest": 34
+          },
+          {
+            "statusTime": "2017-07-04",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 86,
+            "percentageUpTimeWest": 99
+          }
+        ]
+      },
+      {
+        "componentName": "Google-Search-Infra",
+        "statusHistory": [
+          {
+            "statusTime": "2017-06-30",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-06-29",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-07",
+            "statusEast": "w",
+            "statusWest": "d",
+            "percentageUpTimeEast": 22,
+            "percentageUpTimeWest": 55
+          },
+          {
+            "statusTime": "2017-07-06",
+            "statusEast": "d",
+            "statusWest": "u",
+            "percentageUpTimeEast": 66,
+            "percentageUpTimeWest": 77
+          },
+          {
+            "statusTime": "2017-07-05",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 30,
+            "percentageUpTimeWest": 34
+          },
+          {
+            "statusTime": "2017-07-04",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 86,
+            "percentageUpTimeWest": 99
+          }
+        ]
+      }
+    ],
+    "apiHistory": [
+      {
+        "componentName": "T-Mobile-Api",
+        "statusHistory": [
+          {
+            "statusTime": "2017-07-09",
+            "statusEast": "u",
+            "statusWest": "d",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-08",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 1001,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-07",
+            "statusEast": "d",
+            "statusWest": "w",
+            "percentageUpTimeEast": 221,
+            "percentageUpTimeWest": 55
+          },
+          {
+            "statusTime": "2017-07-06",
+            "statusEast": "d",
+            "statusWest": "u",
+            "percentageUpTimeEast": 661,
+            "percentageUpTimeWest": 77
+          },
+          {
+            "statusTime": "2017-07-05",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 301,
+            "percentageUpTimeWest": 34
+          },
+          {
+            "statusTime": "2017-07-04",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 86,
+            "percentageUpTimeWest": 99
+          }
+        ]
+      },
+      {
+        "componentName": "Google-Search-Api",
+        "statusHistory": [
+          {
+            "statusTime": "2017-06-30",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-06-29",
+            "statusEast": "w",
+            "statusWest": "u",
+            "percentageUpTimeEast": 100,
+            "percentageUpTimeWest": 100
+          },
+          {
+            "statusTime": "2017-07-07",
+            "statusEast": "w",
+            "statusWest": "d",
+            "percentageUpTimeEast": 22,
+            "percentageUpTimeWest": 55
+          },
+          {
+            "statusTime": "2017-07-06",
+            "statusEast": "d",
+            "statusWest": "u",
+            "percentageUpTimeEast": 66,
+            "percentageUpTimeWest": 77
+          },
+          {
+            "statusTime": "2017-07-05",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 30,
+            "percentageUpTimeWest": 34
+          },
+          {
+            "statusTime": "2017-07-04",
+            "statusEast": "u",
+            "statusWest": "u",
+            "percentageUpTimeEast": 86,
+            "percentageUpTimeWest": 99
+          }
+        ]
+      }
+    ]
+  }
+}

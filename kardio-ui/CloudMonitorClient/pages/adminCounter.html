@@ -1,0 +1,111 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="col-md-12 no-padding">
+	<h3>Counter Configurations</h3>
+	<div id="counterListForm" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+		<select id="counterListSel" class="form-group" size="7" ng-model="adminCounterCtrl.counterEditSelected"
+			ng-options="counter as (counter.position + '.' + counter.counterName + ' ('+ (counter.delInd == 1 ? 'In Active': 'Active') + ')' ) for counter in adminCounterCtrl.counterList track by counter.counterId">
+		</select>
+	</div>
+	<div id="counterListButtonGrp" class="form-group col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding">
+		<button class="btn btn-primary" ng-click="adminCounterCtrl.moveUp()">Move Up</button>
+		<button class="btn btn-primary" ng-click="adminCounterCtrl.moveDown()">Move Down</button>
+		<button class="btn btn-primary" ng-click="adminCounterCtrl.editCounterData()">Edit</button>
+		<button class="btn btn-danger" ng-click="adminCounterCtrl.resetCounterData()">Reset</button>
+		<button class="btn btn-primary" ng-click="adminCounterCtrl.saveCounterData()">Save</button>
+	</div>
+	<div id="counterEditForm" class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding" ng-show="adminCounterCtrl.isEditCounter">
+		<div class="from-group no-padding clearfix">
+			<label for="envName">Counter Name</label>
+			<input type="text" class="admin-form" ng-model="adminCounterCtrl.counterEdited.counterName">
+		</div>
+		<br/>
+		<div class="from-group no-padding clearfix">
+			<label for="statusInd" class="float-left">Status Indicator:</label>
+			<switch id="statusInd" ng-model="adminCounterCtrl.counterEdited.statusInd" class="mySwitch"></switch>
+			({{(adminCounterCtrl.counterEdited.statusInd == false)? 'Active':'In Active'}})
+		</div>
+		<br/>
+		<div class="from-group no-padding clearfix">
+			<button class="btn btn-danger float-right cancel-btn" ng-click="adminCounterCtrl.clearCounterData()">Cancel</button>
+			<button class="btn btn-primary float-right" ng-click="adminCounterCtrl.updateCounterData()">Update</button>
+		</div>
+	</div>
+
+	<div class="clearfix"><br/><hr/><br/></div>
+
+	<div id="envCounterListForm" class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+		<div class="headerTable component-table">
+			<table class="table table-bordered table-hover table-responsive table-condensed env-counter-table">
+				<thead>
+					<tr>
+						<th ng-repeat="(i,th) in adminCounterCtrl.headerEnvCounter"
+							ng-click="adminCounterCtrl.changeSorting(i)">{{th}}<div ng-class="adminCounterCtrl.selectedCls(i)"></div></th>
+						<th class="non-clickable">Action</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="bodyTable component-table-body">
+			<table class="table table-bordered table-hover table-responsive table-condensed env-counter-table">
+				<tbody>
+					<tr ng-repeat="envCtr in adminCounterCtrl.envCounterList | orderBy : adminCounterCtrl.sort.column : adminCounterCtrl.sort.descending">
+						<td>{{envCtr.counterName}}</td>
+						<td>{{envCtr.envName}}</td>
+						<td>{{envCtr.platform}}</td>
+						<td>
+							<a class="btn btn-primary btn-xs" ng-click="adminCounterCtrl.editEnvConter(envCtr)">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div id="envCounterEditForm" class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding" ng-show="adminCounterCtrl.isEditEnvCounter">
+		<div class="from-group no-padding clearfix">
+			<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3" for="envCounterParam1">Counter Name</label>
+			<input class="col-xs-9 col-sm-9 col-md-9 col-lg-9" value="{{adminCounterCtrl.envCounterEdited.counterName}}" disabled/>
+		</div>
+		<br/>
+		<div class="from-group no-padding clearfix">
+			<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3" for="envCounterParam1">Environment</label>
+			<input class="col-xs-9 col-sm-9 col-md-9 col-lg-9" value="{{adminCounterCtrl.envCounterEdited.envName}}" disabled/>
+		</div>
+		<br/>
+			<div class="from-group no-padding clearfix">
+			<label class="col-xs-3 col-sm-3 col-md-3 col-lg-3" for="platform">Platform</label>
+			<input class="col-xs-9 col-sm-9 col-md-9 col-lg-9" value="{{adminCounterCtrl.envCounterEdited.platform}}" disabled/>
+		</div>
+		<br/>
+		<div class="from-group no-padding clearfix">
+			<label for="envCounterParam1">Counter Config Parameter 1</label>
+			<span data-tooltip="Specify the URL for the Prometheus API query" data-tooltip-position="right"><span class="help-tip"/></span>
+			<textarea id="envCounterParam1" rows="4" ng-model="adminCounterCtrl.envCounterEdited.parameter1"></textarea>
+		</div>
+		<div class="from-group no-padding clearfix">
+			<label for="envCounterParam2">Counter Config Parameter 2</label>
+			<span data-tooltip="Specify the Prometheus API query" data-tooltip-position="right"><span class="help-tip"/></span>
+			<textarea id="envCounterParam2" rows="4" ng-model="adminCounterCtrl.envCounterEdited.parameter2"></textarea>
+		</div>
+		<br/>
+		<div class="from-group no-padding clearfix">
+			<button class="btn btn-danger float-right cancel-btn" ng-click="adminCounterCtrl.clearCounterEnvData()">Cancel</button>
+			<button class="btn btn-primary float-right" ng-click="adminCounterCtrl.saveCounterEnvData()">Save</button>
+		</div>
+	</div>
+</div>

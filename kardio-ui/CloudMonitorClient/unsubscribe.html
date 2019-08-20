@@ -1,0 +1,82 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<!DOCTYPE html>
+
+<html lang="en" ng-app="validateEmailApp">
+<head>
+	<title>CCP Status Dashboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico">
+	
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/media.css">
+	
+	<script type="text/javascript" src="scripts/config/config.js"></script>
+	<script type="text/javascript" src="scripts/properties/constants.js"></script>
+	
+	<script type="text/javascript" src="scripts/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-tooltips.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui.min.js"></script>
+	
+	<script type="text/javascript" src="scripts/unsubscribe.js"></script>
+	
+<style>
+.container {
+	margin: 50px auto 100px;
+	max-width: 600px;
+	position: relative;
+	width: 100%;
+}
+</style>
+</head>
+<body ng-controller="validateEmailController">
+    <div ng-include="'pages/header.html'"></div>
+
+	<div class="contents clearfix error-message-container" ng-show="showError">
+		<span class="error-message">{{errorMessage}}</span>
+		<div class="error-close-button glyphicon glyphicon-remove" ng-click="showError = !showError"></div>
+	</div>
+	<div class="contents row clearfix">
+		<div class="body main-content">
+			<div class="signup clearfix">
+				<div class="col-md-12 no-padding">
+					<div id="contactUsDiv" class="float-right" ng-include="'pages/contactUs.html'"></div>
+				</div>
+				
+				<div class="container">
+					<div ng-if="successMessage != null">{{successMessage}}. Please click <a href="./index.html">here</a> to go to dashboard</div>
+					<div ng-if="successMessage == null">Unexpected error. Please try refreshing the page</div>
+				</div>
+				
+  			</div>
+		</div>
+	</div>
+	<div class="backgroud-modal-div" id="loaderDiv" data-loading>
+		<img src="images/loading.gif" class="ajax-loader"/>
+	</div>
+	<div class="backgroud-modal-div" id="backgroudModalDiv" ng-show="showModalBgGnd"></div>
+	<div class="clearfix footer" ng-include="'pages/footer.html'"></div>
+</body>
+</html>

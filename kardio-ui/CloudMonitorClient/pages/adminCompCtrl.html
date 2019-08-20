@@ -1,0 +1,146 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="col-md-12 no-padding component-tab">
+	<div class="clearfix no-padding">
+		<button class="btn btn-primary" ng-click="adminCompCtrl.addParent()">Add Service Name</button>
+		<button class="btn btn-primary float-right" ng-click="adminCompCtrl.addChild()">Add Health Check Name</button>
+	</div>
+	<div class="col-md-12 no-padding" ng-show="adminCompCtrl.showAddInfraComponent">
+		<h3>{{adminCompCtrl.title}}</h3>
+		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-3 no-padding" ng-hide="adminCompCtrl.isParentEdit || adminCompCtrl.isParentAdd">
+			<label for="componentName">Service Name</label>
+			<span data-tooltip="The name of the component, to be displayed in the Dashboard/History page" data-tooltip-position="right"><span class="help-tip"/></span>
+			<ui-select tagging ng-model="adminCompCtrl.component.selected" theme="bootstrap"
+					ng-disabled="!adminCompCtrl.isParentEdit && adminCompCtrl.isParentAdd" id="parentComponent">
+				<ui-select-match allow-clear="true">{{$select.selected.componentName}}</ui-select-match>
+				<ui-select-choices repeat="component in adminCompCtrl.parentComponents | orderBy: 'componentName'| filter: $select.search track by component.componentId">
+					<div ng-bind="component.componentName"></div>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+		<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-3 no-padding" ng-hide="adminCompCtrl.isParentEdit || adminCompCtrl.isParentAdd">
+			<label for="componentName">Health Check Name</label>
+			<span data-tooltip="The name of the health check for the selected component. This name uniquely identifies the health check and is used in alert messages. A component can have multiple health checks" data-tooltip-position="right"><span class="help-tip"/></span>
+			<input type="text" id="componentName" class="admin-form" ng-model="adminCompCtrl.editComponent.componentName">
+		</div>
+		<div class ="form-group col-xs-6 col-sm-6 col-md-6 col-lg-3" ng-hide="adminCompCtrl.isParentEdit || adminCompCtrl.isParentAdd">
+				<label>Platform</label>
+				<span data-tooltip="Select the Platform in which this component is present." data-tooltip-position="right"><span class="help-tip"/></span>
+					<ui-select tagging ng-model="adminCompCtrl.editComponent.platform" theme="bootstrap" id="platformComponent" style="height:30px;">
+						<ui-select-match allow-clear="true">{{ $select.selected }}</ui-select-match>
+                         <ui-select-choices repeat="choice in ['K8s','Mesos','Generic']">
+                         <div ng-bind="choice | highlight: $select.search"></div>
+                         </ui-select-choices>
+						</ui-select>
+				</div>
+		<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding" ng-show="adminCompCtrl.isParentEdit || adminCompCtrl.isParentAdd">
+			<div><label for="componentName">Service Name</label>
+			<span data-tooltip="The name of the component, to be displayed in the Dashboard/History page" data-tooltip-position="right"><span class="help-tip"/></span>
+			</div>
+			<input type="text" id="componentName" class="admin-form" ng-model="adminCompCtrl.editComponent.componentName">
+		</div>
+		<div class="form-group">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding"><label for="componentDesc">Description</label>
+			<span data-tooltip="Include more details about the component/health check. This is only for documentation purposes" data-tooltip-position="right"><span class="help-tip"/></span>
+			</div>
+			<textarea id="componentDesc" rows="2" ng-model="adminCompCtrl.editComponent.compDesc"></textarea>
+		</div>
+		<div class="form-group" ng-show="adminCompCtrl.editComponent.componentId > 0">
+			<label for="delInd" class="delIndLbl float-left">Status Indicator:</label>
+			<switch id="delInd" name="enabled" ng-model="adminCompCtrl.editComponent.delInd" class="mySwitch"></switch>
+			({{(adminCompCtrl.editComponent.delInd == 1)? 'In Active':'Active'}})
+		</div>
+		<div class="note note-delete" ng-show="adminCompCtrl.editComponent.componentId > 0">* If the Status Indicator is set as red the component is soft deleted</div>
+		<div class="from-group">
+			<button class="btn btn-danger float-right cancel-btn" ng-click="adminCompCtrl.cancelAdd()">Cancel</button>
+			<button class="btn btn-primary float-right" ng-click="adminCompCtrl.saveComponent(adminCompCtrl.editComponent)">Save</button>
+		</div>
+		<br/><br/>
+	</div>
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding" id="parentTable">
+		<div class="headerTable">
+			<table class="table table-bordered table-hover table-responsive table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="(i,th) in adminCompCtrl.parentHead" ng-click="adminCompCtrl.changeSorting(i)">{{th}}<div ng-class="adminCompCtrl.selectedCls(i)"></div></th>
+						<th class="non-clickable">Action</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="bodyTable component-table-body">
+			<table class="table table-bordered table-hover table-responsive table-condensed">
+				<tbody>
+					<tr ng-repeat="component in adminCompCtrl.infraComponent | filter : {'parentComponentId' : 0} : true | orderBy : adminCompCtrl.sort.column : adminCompCtrl.sort.descending">
+						<td>{{component.componentName}}</td>
+						<td>{{(component.delInd == 1)? 'In Active':'Active'}}</td>
+						<td>
+							<a class="btn btn-primary btn-xs" ng-click="adminCompCtrl.listChildren(component)">
+								<span title="View Details" class="glyphicon glyphicon-list" aria-hidden="true"></span>
+							</a>
+							<a class="btn btn-primary btn-xs" ng-click="adminCompCtrl.editComponentForm(component, true)">
+								<span title="Edit" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</a>
+							<a ng-show="component.delInd == 0" class="btn btn-danger btn-xs" ng-click="adminCompCtrl.deleteComponent(component.componentId)">
+								<span title="Delete" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding" id="childTable">
+		<div class="headerTable">
+			<table class="table table-bordered table-hover table-responsive table-condensed health-check-child-table">
+				<thead>
+					<tr>
+						<th ng-repeat="(i,th) in adminCompCtrl.childHead" ng-click="adminCompCtrl.changeSorting(i)">{{th}}<div ng-class="adminCompCtrl.selectedCls(i)"></div></th>
+						<th class="non-clickable">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-hide="adminCompCtrl.parentSelected.componentId != null">
+						<td colspan='3'>Click on the View(Action) of a Service Name to view the Health checks</td>
+					</tr>
+					<tr ng-show="adminCompCtrl.parentSelected.componentId != null &&
+							(adminCompCtrl.infraComponent | filter : {'parentComponentId': adminCompCtrl.parentSelected.componentId} : true).length == 0">
+						<td colspan='3'>No Health checks available for this service</td>
+					</tr>
+			</table>
+		</div>
+		<div class="bodyTable component-table-body" ng-show="adminCompCtrl.parentSelected.componentId != null">
+			<table class="table table-bordered table-hover table-responsive table-condensed health-check-child-table">
+				<tbody>
+					<tr ng-repeat="component in adminCompCtrl.infraComponent | filter : {'parentComponentId': adminCompCtrl.parentSelected.componentId} : true
+							| orderBy : adminCompCtrl.sort.column : adminCompCtrl.sort.descending">
+						<td>{{component.componentName}}</td>
+						<td>{{component.platform}}</td>
+						<td>{{(component.delInd == 1)? 'In Active':'Active'}}</td>
+						<td>
+							<a class="btn btn-primary btn-xs" ng-click="adminCompCtrl.editComponentForm(component, false)">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</a>
+							<a ng-show="component.delInd == 0" class="btn btn-danger btn-xs" ng-click="adminCompCtrl.deleteComponent(component.componentId)">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

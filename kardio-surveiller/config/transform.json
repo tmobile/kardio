@@ -1,0 +1,11 @@
+{
+	"transformName": {
+		"App1": "Application One",
+		"App2": "Application Two"
+	},
+	"convertToInfra": [
+		"App1",
+		"App2",
+		"App3"
+	]
+}

@@ -1,0 +1,182 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="col-md-12 col-sm-12 no-padding health-tab">
+	<button class="btn btn-primary" ng-click="adminHealthCtrl.cancelHealthCheck();adminHealthCtrl.isAddHealthCheck =! adminHealthCtrl.isAddHealthCheck">Add Health Check Configuration</button>
+	<div class="col-md-12 col-sm-12 no-padding" ng-show="adminHealthCtrl.isAddHealthCheck">
+		<h3>{{adminHealthCtrl.title}}</h3>
+		<div class="form-group col-md-12 col-sm-12 no-padding">
+			<div class="form-group col-md-6 col-sm-6 no-padding">
+			<label for="serviceName">Service Name</label>
+				<span data-tooltip="The name of the component for which the health check is configured" data-tooltip-position="right"><span class="help-tip"/></span>
+				<ui-select tagging ng-model="adminHealthCtrl.component.selectedParent" theme="bootstrap" id="serviceName" ng-disabled="adminHealthCtrl.isReadOnly">
+					<ui-select-match allow-clear="true" placeholder="Select Service">{{$select.selected.componentName}}</ui-select-match>
+					<ui-select-choices repeat="component in adminHealthCtrl.infraComponent | filter:{'parentComponentId': 0} : true
+								| orderBy: 'componentName' | filter: $select.search track by component.componentId">
+						<div ng-bind="component.componentName"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+			<div class="form-group col-md-6 col-sm-6 no-padding" ng-show="adminHealthCtrl.component.selectedParent != null">
+				<label for="healthCheckName">Health Check Name</label>
+				<span data-tooltip="Health check name is the name of the health check for the selected component. A component can have multiple health check. This name will be used to identify a health check of a component and is used in alert messages" data-tooltip-position="right"><span class="help-tip"/></span>
+				<ui-select tagging ng-model="adminHealthCtrl.component.selected" theme="bootstrap" id="healthCheckName" ng-disabled="adminHealthCtrl.isReadOnly">
+					<ui-select-match allow-clear="true" placeholder="Select Health Check">{{$select.selected.componentName}}</ui-select-match>
+					<ui-select-choices repeat="component in adminHealthCtrl.infraComponent | filter:{'parentComponentId':adminHealthCtrl.component.selectedParent.componentId} : true
+							| orderBy: 'componentName' | filter: $select.search track by component.componentId">
+						<div ng-bind="component.componentName"></div>
+					</ui-select-choices>
+				</ui-select>
+			</div>
+		</div>
+		<div class="form-group col-md-12 col-sm-12 no-padding">
+			<div class="col-sm-3 no-padding">
+				<div><label for="environment">Environment</label>
+				<span data-tooltip="The environment for which the health check is set up" data-tooltip-position="right"><span class="help-tip"/></span>
+				</div>
+				<select class="admin-from" id="environment" ng-model="adminHealthCtrl.healthCheck.environmentId" ng-disabled="adminHealthCtrl.isReadOnly">
+					<option ng-repeat="env in adminHealthCtrl.envData" value="{{env.environmentId}}" ng-selected="env.environmentId == adminHealthCtrl.healthCheck.environmentId">{{env.environmentName}}</option>
+				</select>
+			</div>
+			<div class="col-sm-3">
+
+				<div><label for="region">Region</label>
+				<span data-tooltip="The region for which the health check is set up" data-tooltip-position="right"><span class="help-tip"/></span>
+				</div>
+				<select class="admin-from" id="region" ng-model="adminHealthCtrl.healthCheck.regionId" ng-disabled="adminHealthCtrl.isReadOnly">
+					<option value="1" ng-selected="adminHealthCtrl.healthCheck.regionId == 1">West Region</option>
+					<option value="2" ng-selected="adminHealthCtrl.healthCheck.regionId == 2">East Region</option>
+				</select>
+			</div>
+			<div class="col-sm-3">
+				<label for="hcType">Health Check Type</label>
+				<span data-tooltip="The various health checking methods available in the system." data-tooltip-position="right"><span class="help-tip"/></span>
+				<select class="admin-from" id="hcType" ng-model="adminHealthCtrl.healthCheck.healthCheckTypeId">
+					<option ng-repeat="type in adminHealthCtrl.healthCheckTypesArray" value="{{type.healthCheckTypeId}}" ng-selected="type.healthCheckTypeId == adminHealthCtrl.healthCheck.healthCheckTypeId">{{type.healthCheckTypeName}}</option>
+				</select>
+			</div>
+			<div class="col-sm-3 no-padding">
+				<label for="maxRetryCount">Max Retry Count</label>
+				<span data-tooltip="The maximum number of consecutive failures of the health check before the service is marked as unhealthy. When the health check exceeds the maximum retry count, a service failure alert is sent to the subscribers of the service" data-tooltip-position="top"><span class="help-tip"/></span>
+				<input class="admin-from" type="number" id="maxRetryCount" ng-model="adminHealthCtrl.healthCheck.maxRetryCount">
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-12 no-padding" ng-show="adminHealthCtrl.healthCheck.healthCheckId > 0">
+			<label for="delInd" class="delIndLbl float-left">Status Indicator:</label>
+			<switch id="delInd" name="enabled" ng-model="adminHealthCtrl.healthCheck.delInd" class="mySwitch"></switch>
+			({{(adminHealthCtrl.healthCheck.delInd == 1)? 'Inactive':'Active'}})
+		</div>
+		<div class="note note-delete clearfix" ng-show="adminHealthCtrl.healthCheck.healthCheckId > 0">
+			* If the Status is set as Inactive, the component will not be available in the Dashboard
+		</div>
+		<div class="col-sm-12 col-md-12 no-padding clearfix"><hr/></div>
+		<div class="form-group col-sm-12 no-padding">
+			<div class="no-padding clearfix">
+				<h4>Health Check Configurations</h4>
+			</div>
+			<div class="note clearfix" ng-show="adminHealthCtrl.healthCheck.healthCheckTypeId > 0">
+				Quick Tip : - {{( adminHealthCtrl.healthCheckTypesArray | filter:{'healthCheckTypeId':adminHealthCtrl.healthCheck.healthCheckTypeId} )[0].healthCheckTypeDesc}}
+			</div>
+			<div class="col-sm-4 no-padding">
+				<label for="hcParamType">Health Check Config Type</label>
+				<input id="hcParamType" class="admin-from" ng-model="adminHealthCtrl.healthCheckParam.healthCheckParamKey">
+			</div>
+			<div class="col-sm-5 no-padding">
+				<label for="hcParamValue">Health Check Config Value</label>
+				<input id="hcParamValue" class="admin-from" ng-model="adminHealthCtrl.healthCheckParam.healthCheckParamValue">
+			</div>
+			<div class="col-sm-3 no-padding">
+				<br/>
+				<button ng-if="!adminHealthCtrl.isEdit" class="btn btn-primary admin-from" ng-click="adminHealthCtrl.addHealthCheckParam(adminHealthCtrl.healthCheckParam)">Add</button>
+				<div class="col-sm-6 no-padding">
+					<button ng-if="adminHealthCtrl.isEdit" class="btn btn-primary admin-from" ng-click="adminHealthCtrl.updateHealthCheckParam(adminHealthCtrl.healthCheckParam)">Update</button>
+				</div><div class="col-sm-6 no-padding">
+					<button ng-if="adminHealthCtrl.isEdit" class="btn btn-primary admin-from" ng-click="adminHealthCtrl.clearHealthCheckParam()">Cancel</button>
+				</div>
+			</div>
+		</div>
+		<div class="form-group col-sm-12 no-padding">
+			<table class="table table-bordered table-hover table-responsive table-condensed">
+				<thead>
+					<tr>
+						<th>Health Check Config Type</th>
+						<th>Health Check Config Value</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="param in adminHealthCtrl.healthCheckParamsArray">
+						<td>{{param.healthCheckParamKey}}</td>
+						<td>{{param.healthCheckParamValue}}</td>
+						<td>
+							<a class="btn btn-primary btn-xs" ng-click="adminHealthCtrl.editHealthCheckParam(param)">
+								<span class="glyphicon glyphicon-edit"></span>
+							</a>
+							<a class="btn btn-danger btn-xs" ng-click="adminHealthCtrl.deleteHealthCheckParam(param)">
+								<span class="glyphicon glyphicon-trash"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="from-group no-padding clearfix">
+			<button class="btn btn-danger float-right cancel-btn" ng-click="adminHealthCtrl.cancelHealthCheck()">Cancel</button>
+			<button class="btn btn-primary float-right" ng-click="adminHealthCtrl.saveHealthCheck(adminHealthCtrl.healthCheck)">Save</button>
+		</div>
+		<br/>
+	</div>
+	<div class="top-nav-bar clearfix">
+		<uib-tabset class="col-xs-9 col-sm-9 col-md-9 col-lg-9 no-padding">
+			<uib-tab ng-repeat="env in adminHealthCtrl.envData" heading="{{env.environmentDesc}}" select="adminHealthCtrl.onEnvTabSelect(env.environmentId)"></uib-tab>
+		</uib-tabset>
+		<uib-tabset class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
+			<uib-tab style="float: right;" ng-repeat="reg in adminHealthCtrl.regData" heading="{{reg.regionName}}" select="adminHealthCtrl.onRegionTabSelect(reg.regionId)"></uib-tab>
+		</uib-tabset>
+	</div>
+	<div class="headerTable health-table">
+		<table class="table table-bordered table-hover table-responsive table-condensed">
+			<thead>
+				<tr>
+					<th ng-repeat="(i,th) in adminHealthCtrl.head" ng-click="adminHealthCtrl.changeSorting(i)">{{th}}<div ng-class="adminHealthCtrl.selectedCls(i)"></div></th>
+					<th class="non-clickable">Action</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div class="bodyTable health-table">
+		<table class="table table-bordered table-hover table-responsive table-condensed">
+			<tbody>
+				<tr ng-repeat="healthCheck in adminHealthCtrl.healthCheckArray | filter : {'regionId': adminHealthCtrl.filterRegionId, 'environmentId': adminHealthCtrl.filterEnvironmentId} : true
+							| orderBy : adminHealthCtrl.sort.column : adminHealthCtrl.sort.descending">
+					<td>{{healthCheck.parentComponentName}}</td>
+					<td>{{healthCheck.componentName}}</td>
+					<td>{{healthCheck.platform}}</td>
+					<td>{{healthCheck.environmentName}}</td>
+					<td>{{healthCheck.regionName}}</td>
+					<td>
+						<a class="btn btn-primary btn-xs" ng-click="adminHealthCtrl.editHealthCheck(healthCheck)">
+							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</a>
+						<a ng-show="healthCheck.delInd == 0" class="btn btn-danger btn-xs" ng-click="adminHealthCtrl.deleteHealthCheck(healthCheck.healthCheckId)">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

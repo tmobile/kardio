@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+ <cache
+	name="com.tmobile.kardio.db.entity.EnvironmentEntity"
+	maxEntriesLocalHeap="10000"
+	eternal="false"	
+	timeToIdleSeconds="900"
+	timeToLiveSeconds="900">
+    <persistence strategy="localTempSwap"/>
+</cache>
+ <cache
+	name="com.tmobile.kardio.db.entity.HealthCheckEntity"
+	maxEntriesLocalHeap="10000"
+	eternal="false"	
+	timeToIdleSeconds="900"
+	timeToLiveSeconds="900">
+    <persistence strategy="localTempSwap"/>
+</cache>
+ <cache
+	name="QUERY_GET_APP_AVAILABILITY_PERCENTAGE"
+	maxEntriesLocalHeap="10000"
+	eternal="false"	
+	timeToIdleSeconds="900"
+	timeToLiveSeconds="900">
+    <persistence strategy="localTempSwap"/>
+  </cache>  
+  <cache
+	name="QUERY_GET_API_AVAILABILITY_PERCENTAGE"
+	maxEntriesLocalHeap="10000"
+	eternal="false"	
+	timeToIdleSeconds="900"
+	timeToLiveSeconds="900">
+    <persistence strategy="localTempSwap"/>
+  </cache>  
+  <cache
+	name="QUERY_GET_INFRA_AVAILABILITY_PERCENTAGE"
+	maxEntriesLocalHeap="10000"
+	eternal="false"	
+	timeToIdleSeconds="900"
+	timeToLiveSeconds="900">
+    <persistence strategy="localTempSwap"/>
+  </cache>  
+    <cache
+	name="GET_ENIRONMENT_ID_FROM_NAME"
+	maxEntriesLocalHeap="10000"
+	eternal="false"	
+	timeToIdleSeconds="900"
+	timeToLiveSeconds="900">
+    <persistence strategy="localTempSwap"/>
+  </cache>
+  <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+  maxEntriesLocalHeap="10000" eternal="false">
+  <persistence strategy="localTempSwap" />
+ </cache>
+ <defaultCache maxElementsInMemory="10000" eternal="false"
+        timeToIdleSeconds="300" timeToLiveSeconds="600" overflowToDisk="true" />
+</ehcache>

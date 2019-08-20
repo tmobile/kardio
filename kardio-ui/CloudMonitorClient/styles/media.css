@@ -1,0 +1,90 @@
+@media all and (min-width: 1301px) {
+	.signup{
+		width: 80%;
+	}
+}
+@media all and (max-width: 1300px) {
+	.signup{
+		width: 97%;
+	}
+}
+@media all and (max-width: 1100px) {
+	.counter-row{
+		display: none !important;
+	}
+}
+@media all and (max-width: 800px) {
+	.hide-on-low-res{
+		display: none;
+	}
+	.show-on-low-res{
+		display: table-cell;
+	}
+	.dropdown-menu{
+		top: -120px;
+	}
+	.head .logo{
+		height: 18px;
+	}
+	.heading{
+		font-size: 23px;
+	}
+	.head, .footer{
+		padding: 10px 3% 0px 2%;
+	}
+	.nav-tabs{
+		padding-left: 5px;
+	}
+	.navbar-collapse{
+		overflow-x: hidden;
+	}
+	.modal-dialog {
+	    width: auto !important;
+	}
+	.gdmTable table>thead>tr>th:nth-child(1), .gdmTable table>tbody>tr>td:nth-child(1){
+		width: 40%;
+	}
+	.gdmTable table>thead>tr>th:nth-child(2), .gdmTable table>tbody>tr>td:nth-child(2),
+	.gdmTable table>thead>tr>th:nth-child(3), .gdmTable table>tbody>tr>td:nth-child(3),
+	.gdmTable table>thead>tr>th:nth-child(4), .gdmTable table>tbody>tr>td:nth-child(4){
+		width: 30%;
+	}
+	.wide-table thead>tr>th:nth-child(1), .wide-table tbody>tr>td:nth-child(1){
+		width: 30% !important;
+	}
+	.wide-table thead>tr>th:nth-child(2), .wide-table tbody>tr>td:nth-child(2){
+		width: 30% !important;
+	}
+	.wide-table thead>tr>th:nth-child(3), .wide-table tbody>tr>td:nth-child(3),
+	.wide-table thead>tr>th:nth-child(4), .wide-table tbody>tr>td:nth-child(4),
+	.wide-table thead>tr>th:nth-child(5), .wide-table tbody>tr>td:nth-child(5){
+		width: 20% !important;
+	}
+}
+@media all and (min-width: 801px) {
+	.hide-on-low-res{
+		display: table-cell;
+	}
+	.show-on-low-res{
+		display: none;
+	}
+}
+@media all and (min-width: 1081px) {
+	.sel-wrp, .api-sel-wrp, .app-sel-wrp{
+		width: 50%;
+		float: left;
+		position: relative;
+		min-height: 1px;
+	}
+	.api-sel-wrp{
+		padding-left: 5px;
+	}
+}
+@media all and (max-width: 1080px) {
+	.sel-wrp, .api-sel-wrp, .app-sel-wrp{
+		width: 100%;
+		float: left;
+		position: relative;
+		min-height: 1px;
+	}
+}

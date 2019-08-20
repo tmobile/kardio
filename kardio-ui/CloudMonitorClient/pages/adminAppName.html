@@ -1,0 +1,48 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="col-md-12 no-padding component-tab">
+	<div class="headerTable env-table">
+			<table class="table table-bordered table-hover table-responsive table-condensed">
+				<thead>
+					<tr>
+						<th ng-repeat="(i,th) in adminAppNameCtrl.appLookUpTblHeader" ng-click="adminAppNameCtrl.changeSorting(i)">{{th}}<div ng-class="adminAppNameCtrl.selectedCls(i)"></div></th>
+						<th class="non-clickable">Action</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="bodyTable env-table">
+			<table class="table table-bordered table-hover table-responsive table-condensed">
+				<tbody>
+					<tr ng-repeat="appLookUp in adminAppNameCtrl.appLookUpData | orderBy : adminAppNameCtrl.sort.column : adminAppNameCtrl.sort.descending">
+						<td>
+							<span aria-hidden="true" class="admin-form" ng-show="!adminAppNameCtrl.checkIsEdit(appLookUp)" >{{appLookUp.componentFullName}}</span>
+							<input type="text" ng-show="adminAppNameCtrl.checkIsEdit(appLookUp)" ng-model="appLookUp.componentFullName">
+						</td>
+						<td>{{appLookUp.componentName}}</td>
+						<td>
+							<a class="btn btn-primary btn-xs" ng-click="adminAppNameCtrl.editBtnClick(appLookUp)" ng-show="!adminAppNameCtrl.checkIsEdit(appLookUp)">
+								<span title="Edit" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</a>
+							<a class="btn btn-primary btn-xs" ng-click="adminAppNameCtrl.editAppLookUpName(appLookUp)" ng-show="adminAppNameCtrl.checkIsEdit(appLookUp)">
+								<span title="Edit" class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+</div>

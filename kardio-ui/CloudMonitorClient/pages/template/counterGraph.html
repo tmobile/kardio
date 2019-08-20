@@ -1,0 +1,51 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<div class="row clearfix top-box counter-row" ng-if="ctrGraphCtrl.counterData.length != 0">
+	<span ng-if="ctrGraphCtrl.isCollapsed" ng-click="ctrGraphCtrl.isCollapsed = !ctrGraphCtrl.isCollapsed" class="expand-panel float-left" title="Expand">
+		<div class="panel panel-default"><div class="panel-heading">Click here to view the counters</div></div>
+	</span>
+	<span ng-if="!ctrGraphCtrl.isCollapsed" ng-click="ctrGraphCtrl.isCollapsed = !ctrGraphCtrl.isCollapsed" class="collapse-icon float-left" title="Collapse">
+		<img class="collapse-up" tooltips tooltip-side="top" tooltip-template="Collapse" src="images/ExpandUpArrowBlue.png"/>
+	</span>	
+	<div class="info-box float-left animate-hide" ng-repeat="data in ctrGraphCtrl.counterData" ng-show="!ctrGraphCtrl.isCollapsed" 
+							style="width:{{ctrGraphCtrl.graphBoxWidth}}">
+		{{data.counterName}}<br/><span class="color-magentha info-num" >{{data.metricVal | number : 0}}</span><br/>
+		<nvd3-sparkline-chart ng-if="data.chartData.length >= 1 && data.position != 2"
+			data="data.chartData"
+			margin="{left:10, top:0, bottom:10, right: 10}"
+			rightAlignValue="true"
+			height="{{ctrGraphCtrl.graphHeight}}"
+			width="{{ctrGraphCtrl.graphWidth}}"
+			color="ctrGraphCtrl.colorFn()"
+			ytickformat="ctrGraphCtrl.ytickformat()"
+			x="ctrGraphCtrl.xFunction()"
+			y="ctrGraphCtrl.yFunction()"> 
+              <svg></svg>
+    	</nvd3-sparkline-chart>
+		<nvd3-sparkline-chart ng-if="data.position == 2"
+			data="data.chartData"
+			margin="{left:10, top:0, bottom:10, right: 10}"
+			rightAlignValue="true"
+			height="{{ctrGraphCtrl.graphHeight}}"
+			width="{{ctrGraphCtrl.graphWidth}}"
+			color="ctrGraphCtrl.colorFn()"
+			ytickformat="ctrGraphCtrl.ytickformatT()"
+			x="ctrGraphCtrl.xFunction()"
+			y="ctrGraphCtrl.yFunction()" > 
+			</nvd3-sparkline-chart>
+	</div>
+</div>
+

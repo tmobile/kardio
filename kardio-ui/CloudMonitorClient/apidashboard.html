@@ -1,0 +1,203 @@
+<!--
+ *Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+ *
+ *Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ *use this file except in compliance with the License.  You may obtain a copy
+ *of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *Unless required by applicable law or agreed to in writing, software
+ *distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ *WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ *License for the specific language governing permissions and limitations under
+ *the License.
+-->
+<!DOCTYPE html>
+
+<html lang="en" ng-app="GDMApp">
+<head>
+	<title>CCP Status Dashboard</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico">
+
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/nv.d3.min.css">
+	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/media.css">
+	<link rel="stylesheet" href="styles/select.min.css">
+	<link rel="stylesheet" href="styles/apidashboard.css">
+	
+	<script type="text/javascript" src="scripts/config/config.js"></script>
+	<script type="text/javascript" src="scripts/properties/constants.js"></script>
+	<script type="text/javascript" src="scripts/lib/jspdf.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/jspdf.plugin.auto-table.js"></script>
+	<script type="text/javascript" src="scripts/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-animate.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/ui-bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/Chart.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angular-ui-switch.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/select.js"></script>
+	<script type="text/javascript" src="scripts/lib/d3.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/nv.d3.min.js"></script>
+	<script type="text/javascript" src="scripts/lib/angularjs-nvd3-directives.min.js"></script>
+	
+	<script type="text/javascript" src="scripts/apidashboard.js"></script>
+	
+	<script type="text/javascript" src="scripts/services/httpService.js"></script>
+	<script type="text/javascript" src="scripts/services/httpInterceptor.js"></script>
+	<script type="text/javascript" src="scripts/services/callApiService.js"></script>
+	<script type="text/javascript" src="scripts/services/graphService.js"></script>
+	
+	<script type="text/javascript" src="scripts/directives/counterGraph.js"></script>
+	<script type="text/javascript" src="scripts/directives/loading.js"></script>
+</head>
+<body ng-controller="mainController as mainCtrl">
+    	<div ng-include="'pages/header.html'"></div>
+	<div class="contents clearfix error-message-container" ng-show="showError">
+		<span class="error-message">{{errorMessage}}</span>
+		<div class="error-close-button glyphicon glyphicon-remove" ng-click="showError = !showError"></div>
+	</div>
+	<div class="contents row clearfix">
+		<div class="body main-content">
+			<div class="signup clearfix">
+				<counter-graph environment=""></counter-graph>
+				<div class="col-md-12 no-padding hide-on-low-res clearfix">
+					<div id="contactUsDiv" class="float-right" ng-include="'pages/contactUs.html'"></div>
+					<div class="text-block float-left">{{$root.props.applicationDescription}}</div>
+				</div>
+				<div class="navbar top-nav-bar clearfix">
+					<div class="navbar-header float-left">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#environment-navbar" aria-expanded="false">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse no-padding col-xs-12 col-sm-12 col-md-12 col-lg-12" id="environment-navbar">
+						<ul class="nav navbar-nav">
+							<li class="nav-tabs {{mainCtrl.environment == 'all' ? 'active' : ''}}"><a ng-click="mainCtrl.onEnvSelected('all')">All Environments</a></li>
+						</ul>
+						<ul class="nav navbar-nav" ng-repeat="env in mainCtrl.envData | filter:{ environmentName: '!Generic'}">
+							<li class="nav-tabs {{mainCtrl.environment == env.environmentName ? 'active' : ''}}">
+								<a ng-click="mainCtrl.onEnvSelected(env.environmentName)">{{env.environmentDesc}}</a>
+							</li>
+						</ul>
+					</div>
+					<div class="high-level-link">
+						<a href="index.html#!/dashboard">Dashboard</a> | <a href="index.html#!/statusHistory">History</a> | <a href="apidashboard.html">API Dashboard</a>
+					</div>
+				</div>
+				<div class="sel-wrp">
+					<div class="app-sel-wrp">
+						<ui-select ng-model="mainCtrl.selectedPlatform" theme="bootstrap" id="appName" close-on-select="true">
+						<ui-select-match allow-clear="true" placeholder="Select Orchestration Platform">{{ $select.selected }}</ui-select-match>
+                         <ui-select-choices repeat="choice in ['All','Mesos','K8s']">
+                         <div ng-bind-html="choice | highlight: $select.search | trustAsHtml"></div>
+                         </ui-select-choices>
+						</ui-select>
+					</div>
+					<div class="api-sel-wrp" ng-show="mainCtrl.selectedPlatform != null && mainCtrl.selectedPlatform.length > 0" close-on-select="false">
+						<ui-select multiple ng-model="mainCtrl.selectedApplications" theme="bootstrap" id="appName" close-on-select="false">
+						<ui-select-match allow-clear="true" placeholder="Select Application">{{$item.appFullName != null ? $item.appFullName : $item.componentName}}</ui-select-match>
+						<ui-select-choices repeat="component in mainCtrl.platform| filter:{'parentComponentId': 0} : true |
+						orderBy: 'componentName' | filter: $select.search track by component.componentId">
+							<div ng-bind-html="(component.appFullName != null ? component.appFullName : component.componentName) | highlight: $select.search | trustAsHtml"></div>
+						</ui-select-choices>
+						</ui-select >
+					</div>
+					<div class="api-sel-wrp" ng-if="(mainCtrl.selectedApplications.length == null||mainCtrl.selectedApplications.length == 0) && mainCtrl.selectedPlatform == null">
+					<button type="button" ng-model="mainCtrl.export" class="btn" ng-click="mainCtrl.createPDF()">Export</button> 
+					</div>
+					<div ng-if="(mainCtrl.selectedApplications.length == null||mainCtrl.selectedApplications.length == 0)" ng-show="mainCtrl.selectedPlatform != null && mainCtrl.selectedPlatform.length > 0">
+					<button type="button" ng-model="mainCtrl.export" class="btn" ng-click="mainCtrl.createPDF()">Export</button> 
+					</div>
+					<div class="api-sel-wrp" ng-show="mainCtrl.selectedApplications != null && mainCtrl.selectedApplications.length > 0" close-on-select="false">
+						<ui-select multiple ng-model="mainCtrl.selectedApis" theme="bootstrap" id="apiName" close-on-select="false">
+						<ui-select-match allow-clear="true" placeholder="Select Api">{{$item.componentName}}</ui-select-match>
+						<ui-select-choices repeat="component in mainCtrl.marathonComponents | filterList: mainCtrl.selectedApplications : true
+							| orderBy: 'componentName' | filter: $select.search track by component.componentId">
+							<div ng-bind-html="component.componentName | highlight: $select.search | trustAsHtml"></div>
+						</ui-select-choices>
+						</ui-select>
+					</div>
+					<div class="api-sel-wrp" ng-show="mainCtrl.selectedApplications != null && mainCtrl.selectedApplications.length > 0">
+					<button type="button" ng-model="mainCtrl.export" ng-click="mainCtrl.createPDF()" class="btn">Export</button>
+				</div>
+				</div>
+				<div class="date-wrp float-right no-padding">
+					<span class="form-label float-left">Date </span>
+					<div class="float-left date-picker-div">
+         					<input id="fromDate" type="text" class="float-left form-control" uib-datepicker-popup="{{mainCtrl.dateFormat}}" ng-model="mainCtrl.fromDate"
+         							is-open="mainCtrl.fromDateOpened" datepicker-options="mainCtrl.dateOptions" ng-required="true" close-text="Close" readonly/>
+         					<span class="float-left input-group-btn">
+           						<button type="button" class="btn btn-default" ng-click="mainCtrl.openFromDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+         					</span>
+       				</div>
+       				<span class="form-label float-left">  -  </span>
+       				<div class="float-left date-picker-div">
+         					<input id="toDate" type="text" class="float-left form-control" uib-datepicker-popup="{{mainCtrl.dateFormat}}" ng-model="mainCtrl.toDate" min-date="toMinDate"
+         							is-open="mainCtrl.toDateOpened" datepicker-options="mainCtrl.dateOptions" ng-required="true" close-text="Close" readonly/>
+         					<span class="float-left input-group-btn">
+           						<button type="button" class="btn btn-default" ng-click="mainCtrl.openToDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+         					</span>
+       				</div>
+       				<div class="float-left">
+	       				<span class="form-label float-left">Interval</span>
+       					<select ng-model="mainCtrl.graphInterval" ng-change="mainCtrl.changeInterval()">
+							<option value="day">Day</option>
+							<option value="week">Week</option>
+							<option value="month">Month</option>
+						</select>
+       				</div>
+				</div>
+				
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+					<canvas id="canvas" class="chartjs-render-monitor"></canvas>
+				</div>
+				<div id="apiDetails" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding" ng-show="mainCtrl.selectedApplications != null && mainCtrl.selectedApplications.length > 0">
+					<h3>Api Details</h3>
+					<div class="headerTable env-table" id="apiHead">
+						<table class="table table-bordered table-hover table-responsive table-condensed"  id="apiHeader">
+							<thead>
+								<tr>
+									<th ng-repeat="(sortColumn,columnHeading) in mainCtrl.apiDetailsHeader" ng-click="mainCtrl.changeSorting(sortColumn)">
+										{{columnHeading}}<div ng-class="mainCtrl.selectedCls(sortColumn)"></div>
+									</th>
+								</tr>
+							</thead>
+						</table>
+                    </div>
+					<div class="bodyTable env-table">
+						<table class="table table-bordered table-hover table-responsive table-condensed" id="apiBody">
+							<tbody>
+								<tr ng-repeat="component in mainCtrl.apiDtsTableData | filterList: mainCtrl.selectedApplications : false | orderBy : mainCtrl.sort.column : mainCtrl.sort.descending">
+									<td>{{mainCtrl.getParentFullName(component.parentComponentId)}}</td>
+									<td>{{component.componentName}}</td>
+									<td>{{component.createdDate | date : 'dd MMMM yyyy'}} {{component.createdDate == null ? 'Not Available' : ''}}</td>
+									<td>{{component.envName}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="bottom-area col-md-12 no-padding show-on-low-res float-right clearfix">
+				<div id="contactUsDiv" ng-include="'pages/contactUs.html'"></div>
+			</div>
+ 		</div>
+	</div>
+	<br>
+	<div class="backgroud-modal-div" id="loaderDiv" data-loading>
+		<img src="images/loading.gif" class="ajax-loader"/>
+	</div>
+	<div class="backgroud-modal-div" id="backgroudModalDiv" ng-show="showModalBgGnd"></div>
+	<div class="clearfix footer" ng-include="'pages/footer.html'"></div>
+</body>
+</html>
