@@ -10,15 +10,9 @@ At T-Mobile, we run several massive multi-tenant Container Orchestration platfor
 Embed Youtube video here
 
 ## QuickStart
-The quickest way to get Kardio running is to use the pre-build docker images on dockerhub. The following steps will bring up a Kardio instance for you to test-drive it.  Please note that the quick start guide uses an Embedded database, which is not recommended for production use. Please follow the  [Setup Guide](docs/Setup.md) for more information on using a MySQL database with Kardio.
 
-    # Starts a database. 
-    docker run -p 1521:1521 oscarfonts/h2
-    
-    # Starts the Kardio Components
-    docker run -p 80:80 tmobile/kardio-ui
-    docker run -p 7070:7070 tmobile/kardio-api
-    docker run tmobile/kardio-surveiller
+For a quick test-drive of Kardio, follow the steps in [Quick Start](./docs/setup.md#running-from-pre-built-docker-images) 
+
 
 ## Functionality
 
@@ -79,4 +73,4 @@ Detailed User guide is [here](./docs/Usage.md)
 [Introducing Kardio](https://opensource.t-mobile.com/blog/posts/introducing-kardio/)
 
 ## License
-Kardiois open-sourced under the terms of section 7 of the Apache 2.0 license and is released AS-IS WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
+Kardio is open-sourced under the terms of the Apache 2.0 license and is released AS-IS WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND pursuant to Section 7 of the Apache 2.0 license.

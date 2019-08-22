@@ -1,5 +1,5 @@
 // =============================================================================
-// Copyright 2019 T-Mobile, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2019 T-Mobile USA, Inc.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not
 // use this file except in compliance with the License.  You may obtain a copy
@@ -12,8 +12,11 @@
 // WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 // License for the specific language governing permissions and limitations under
 // the License.
+// See the LICENSE file for additional language around disclaimer of warranties.
+// Trademark Disclaimer: Neither the name of "T-Mobile, USA" nor the names of
+// its contributors may be used to endorse or promote products derived from this
+// software without specific prior written permission.
 // =============================================================================
-
 // If the API is hosted on a different server, change 'apiHost' and 'apiPort' to point to the API server location.
 //
 // Leave 'apiHost' empty to use the same hostname as the UI.

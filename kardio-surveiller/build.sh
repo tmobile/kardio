@@ -1,3 +1,3 @@
 #!/bin/sh
 
-mvn $MAVEN_OPTS clean package
+mvn clean package
