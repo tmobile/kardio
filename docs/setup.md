@@ -191,9 +191,9 @@ Set Environment variable $MYSQL_ROOT_PASSWORD
     sed -i "s/localhost/$IP/g" kardio-surveiller/config/config.properties
 	
 	# Start 
-	docker run -p 8080:80 tmobile/kardio-ui
-	docker run -p 7070:7070 -v $PWD/kardio-api/config/application.properties:/kardio-api/config/application.properties tmobile/kardio-api
-	docker run -v $PWD/kardio-surveiller/config/config.properties:/kardio-surveiller/config/config.properties tmobile/kardio-surveiller
+	docker run -p 8080:80 -d tmobile/kardio-ui
+	docker run -p 7070:7070 -v $PWD/kardio-api/config/application.properties:/kardio-api/config/application.properties -d tmobile/kardio-api
+	docker run -v $PWD/kardio-surveiller/config/config.properties:/kardio-surveiller/config/config.properties -d tmobile/kardio-surveiller
 
 Kardio will be available at `http://$IP:8080` where $IP is the IP of the host where the above commands were executed. Please note that running mysql in this way is not recommended. Please follow recommendations
     

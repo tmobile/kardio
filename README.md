@@ -1,3 +1,4 @@
+
 ![KARDIO](./docs/images/kardio.png)
 
 # Introduction
@@ -22,13 +23,13 @@ Kardio has the capability to perform health checks of web services:
 
 ### High Availability
 
-Kardio supports a High Availability (HA) mode with a two-node cluster in active-passive configuration. The HA mode is designed to work across multiple regions if required. For more information, see  [HA Setup](./docs/Production.md#HASetup)
+Kardio supports a High Availability (HA) mode with a two-node cluster in active-passive configuration. The HA mode is designed to work across multiple regions if required. 
 
 ### Multi-Region/Multi Environment Support
 Kardio has the capability to run on multiple Regions. The Kardio dashboard displays data for every available Environment/Region.
 
 ### RBAC
-Kardio supports Role Based Access Control/Restrictions using LDAP integration. See [RBAC Integration](./docs/Integrations.md#RBAC) for more information
+Kardio supports Role Based Access Control/Restrictions using LDAP integration. See [RBAC Integration](./docs/Integrations.md#ldap-integration) for more information
 
 ## Feature Highlights
 
@@ -52,7 +53,7 @@ Kardio supports Role Based Access Control/Restrictions using LDAP integration. S
 
 ## UI Features
 
-Kardio UI has the following components. See [User Guide](Usage.md) for more details.
+Kardio UI has the following components. 
 
 -   **Counters -** Display Total Transactions (http requests), Current Requests per Second, Total Containers Run, Current Running Containers, Number of services running and Uptime in percentage on all clusters individually and combined.
 -   **Dashboard -** All services deployed in a cluster will be visible by environments and region.
@@ -61,10 +62,7 @@ Kardio UI has the following components. See [User Guide](Usage.md) for more deta
 -   **Admin Console -**  Authentication is based on LDAP and admins will have ability to add/modify/delete Counters, Environments and Messages. Admins can add any endpoints to monitor and also to alert users, include release notifications on top of each environments as well.
 
 ## Installation
-For Installation instructions and to build from source please follow the [Setup Guide](./docs/Setup.md)
-
-## User Guide
-Detailed User guide is [here](./docs/Usage.md)
+For Installation instructions and to build from source please follow the [Setup Guide](./docs/setup.md)
 
 ## Announcement Blog Post
 [Introducing Kardio](https://opensource.t-mobile.com/blog/posts/introducing-kardio/)
