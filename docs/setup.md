@@ -21,8 +21,6 @@ The main pages of the UI layer are:
 *   **History:** This screen displays the service status for the past seven days for all the services.
 *   **API Dashboard:** The API dashboard shows the number of services and containers/pods deployed on Kubernetes/Marathon as a graph for a selected time period. 
 
-For more information about the UI screens, see the [Kardio User Guide](./user_guide.md).
-
  **Administration Page**: Using this page, the user can:
 
 *   Add/Edit services/health check names
