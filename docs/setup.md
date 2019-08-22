@@ -171,29 +171,30 @@ The log files are located under `/var/log/kardio`. For the API component, a `kar
 ## Running from pre-built Docker Images
 In case you want to try out Kardio without building from code, please follow these instructions.
 
-Set Environment variable $MYSQL_ROOT_PASSWORD
+Set Environment variable $MYSQL_ROOT_PASSWORD. We are setting password as "password" since that is what is used in the configuration files. Please change the configuration files(`kardio-api/config/application.properties` and `kardio-surveiller/config/config.properties`) to reflect the password you set if it is different.
 
+	MYSQL_ROOT_PASSWORD=password
 	git clone https://github.com/tmobile/kardio.git
 	cd kardio
 	
 	# Start a local MySQL instance. 
 	docker run --name kardio-mysql -e MYSQL_ROOT_PASSWORD="$MYSQL_ROOT_PASSWORD" -d -p 3306:3306 mysql:5.6
 	
-	# Apply DB script
-	
+	# Apply DB Initialization script
 	docker exec -i kardio-mysql sh -c 'exec mysql -uroot -p"$MYSQL_ROOT_PASSWORD"' < ./kardio-surveiller/sql/InitDB.sql
 
-    # Modify configuration to reflect local IP address instead of 'localhost'
-    IP="$(hostname -I | cut -d' ' -f1)"
-    sed -i "s/localhost/$IP/g" kardio-api/config/application.properties
-    sed -i "s/localhost/$IP/g" kardio-surveiller/config/config.properties
+	# Modify configuration to reflect local IP address instead of 'localhost'. 
+	# You can manually edit the property files to update the IP address if the below commands don't work for you.
+	IP="$(hostname -I | cut -d' ' -f1)"
+	sed -i "s/localhost/$IP/g" kardio-api/config/application.properties
+	 sed -i "s/localhost/$IP/g" kardio-surveiller/config/config.properties
 	
 	# Start 
 	docker run -p 8080:80 -d tmobile/kardio-ui
 	docker run -p 7070:7070 -v $PWD/kardio-api/config/application.properties:/kardio-api/config/application.properties -d tmobile/kardio-api
 	docker run -v $PWD/kardio-surveiller/config/config.properties:/kardio-surveiller/config/config.properties -d tmobile/kardio-surveiller
 
-Kardio will be available at `http://$IP:8080` where $IP is the IP of the host where the above commands were executed. Please note that running mysql in this way is not recommended. Please follow recommendations
+Kardio will be available at `http://$IP:8080` where $IP is the IP of the host where the above commands were executed. Please note that running mysql in this way is not recommended for any purpose other than evaluation.
     
 Extension Points
 ----------------
