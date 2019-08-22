@@ -30,27 +30,23 @@ Each Environment in Kardio can represent a Kubernetes Cluster. The Kubernetes en
 		k8s.api.path.service = /api/v1/services 
 		k8s.api.path.pods = /api/v1/pods
 
-Please see [Architecture](./Architecture.md#Kubernetes) for more information on how health checks are performed on services deployed on Kubernetes.
-
 ### Marathon
 
 Kardio integrates with Marathon to read all the services deployed on it. Kardio expects services to have a label named `HEALTHCHECK` label if they need be monitored. The value of the `HEALTHCHECK` label should be an HTTP endpoint that returns the health status of the service via HTTP status codes. The health check endpoints should be accessible by Kardio without authentication. Kardio checks the health check endpoint every minute to update the service status. If a health check fails three consecutive times, it is marked as unhealthy.
 
 ##### Configuring Marathon Integration
 
-In order to get the list of services from Marathon, Kardio uses the Marathon Apps API. The Marathon API url and credentials can be added using the Admin UI in the Environments Tab. Each `Environment` can have its own Marathon endpoint configured. This can be done when a new Environment is created or by editing an existing Environment. Admin UI is only accessible for Authenticated users. Please see [User Guide](./UserGuide.md#Admin) for more details
+In order to get the list of services from Marathon, Kardio uses the Marathon Apps API. The Marathon API url and credentials can be added using the Admin UI in the Environments Tab. Each `Environment` can have its own Marathon endpoint configured. This can be done when a new Environment is created or by editing an existing Environment. Admin UI is only accessible for Authenticated users. 
 
 ![Add new Environment](./images/admin-addenv.png)
 
 The services in Marathon can be optionally categorized as Application Services and Platform Services(or Infra Components). To mark certain services as Platform services, edit the `transform.json` in `kardio-surveiller/config` and add the service name to the `convertToInfra` list.
 
-Please see [Architecture](./Architecture.md#Marathon) for more information on how health checks are performed on services deployed on Marathon.
-
 ### Configuring Services Outside Kubernetes and Marathon
 
-Health check of services running outside Kubernetes and Marathon can be achieved through manual configuration of the health check endpoint using the Admin Pages. See [User Guide](./UserGuide.md) for more information.
+Health check of services running outside Kubernetes and Marathon can be achieved through manual configuration of the health check endpoint using the Admin Pages.
 
-Out of the box, Kardio supports health checks of REST endpoints, TCP Port checks, etc. External health checks are completely extendable using health check handlers (see  [Health Check Handlers](./Architecture.md#Handlers)). Kardio provides an option to add multiple health checks per service if required.
+Out of the box, Kardio supports health checks of REST endpoints, TCP Port checks, etc. External health checks are completely extendable using health check handlers (see  [Health Check Handlers](./setup.md#health-check-handler)). Kardio provides an option to add multiple health checks per service if required.
 
 ## Slack Channel Integration
 
