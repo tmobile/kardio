@@ -1,13 +1,10 @@
 ![KARDIO](./images/kardio.png)
 
 # Introduction
-**Kardio**  is a standalone status check tool for services deployed on Kubernetes and Marathon. It can also perform health checks on rest endpoints, TCP ports, etc.
+**Kardio**  is a simple tool that can be configured to perform health checks on any endpoint. Kardio has a rich UI showing status and availability based on responses from REST endpoints, TCP ports, etc. It is also integrated with Slack and email for alerting
 
-At T-Mobile, USA, Inc., we run several massive multi-tenant Container Orchestration platforms and these platforms rely on monitoring tools such as Prometheus, Grafana, etc. A status check system that is standalone and is independent of the primary monitoring stack was required in case any part of the primary monitoring was compromised. We started Kardio as a simple status UI for services in Marathon, and later added more features as our platforms grew and switched to Kubernetes.
+At T-Mobile, USA, Inc. we run several massive multi-tenant Container Orchestration platforms and these platforms rely on monitoring tools such as Prometheus, Grafana, etc. A status check system that is standalone and is independent of the primary monitoring stack was required in the event of degraded performance in any part of the primary monitoring system. We started Kardio as a simple status UI for services on our platforms, and later added more features as our platforms grew and adopted Kubernetes.
 
-## Quick Demo
-
-Embed Youtube video here
 
 ## QuickStart
 
@@ -56,7 +53,7 @@ Kardio supports Role Based Access Control/Restrictions using LDAP integration. S
 
 Kardio UI has the following components. See [User Guide](Usage.md) for more details.
 
--   **Counters -** Display Total Transactions, Current Requests per Second, Total Containers Run, Current Running Containers, Number of services running and Uptime on all Mesos and K8s Clusters individually and combined.
+-   **Counters -** Display Total Transactions (http requests), Current Requests per Second, Total Containers Run, Current Running Containers, Number of services running and Uptime in percentage on all clusters individually and combined.
 -   **Dashboard -** All services deployed in a cluster will be visible by environments and region.
 -   **History -** Last 7 days of status of each service by environments will be displayed with reason for failures and timestamp.
 -   **API Dashboard -** Trend of Services, Containers, RPS and Latency over period of time will be displayed in a graph. Filters based on Platform, Environment, Application will be displayed with an option to export the graph in PDF file.
