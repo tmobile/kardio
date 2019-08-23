@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/tmobile/kardio.svg?branch=master)](https://travis-ci.com/tmobile/kardio)
 
 ![KARDIO](./docs/images/kardio.png)
 
