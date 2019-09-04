@@ -187,12 +187,12 @@ Set Environment variable $MYSQL_ROOT_PASSWORD. We are setting password as "passw
 	# You can manually edit the property files to update the IP address if the below commands don't work for you.
 	IP="$(hostname -I | cut -d' ' -f1)"
 	sed -i "s/localhost/$IP/g" kardio-api/config/application.properties
-	 sed -i "s/localhost/$IP/g" kardio-surveiller/config/config.properties
+	sed -i "s/localhost/$IP/g" kardio-surveiller/config/config.properties
 	
 	# Start 
 	docker run -p 8080:80 -d tmobile/kardio-ui
 	docker run -p 7070:7070 -v $PWD/kardio-api/config/application.properties:/kardio-api/config/application.properties -d tmobile/kardio-api
-	docker run -v $PWD/kardio-surveiller/config/config.properties:/kardio-surveiller/config/config.properties -d tmobile/kardio-surveiller
+	docker run -v $PWD/kardio-surveiller/config/config.properties:/surveiller/config.properties -d tmobile/kardio-surveiller
 
 Kardio will be available at `http://$IP:8080` where $IP is the IP of the host where the above commands were executed. Please note that running mysql in this way is not recommended for any purpose other than evaluation.
     
