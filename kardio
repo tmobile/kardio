@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 action=""
 if [ $1 = "build" ]; then
