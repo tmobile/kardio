@@ -25,6 +25,7 @@ package com.tmobile.kardio.surveiller.constants;
  */
 public class SurveillerConstants {
 	private SurveillerConstants() {}
+	public static final String CONFIG_FILE_ENV_VAR = "SURVEILLER_CONFIG_FILE";
 	
 	public static final String CONFIG_DB_DRIVER_CLASS = "driver.class";
 	public static final String CONFIG_DB_URL = "db.url";
