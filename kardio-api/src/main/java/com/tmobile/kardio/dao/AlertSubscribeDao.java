@@ -19,10 +19,10 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-
 import com.tmobile.kardio.bean.Subscription;
 import com.tmobile.kardio.db.entity.AlertSubscriptionEntity;
+
+import java.util.List;
 
 /**
  * Interface for DAO for alert_subscription

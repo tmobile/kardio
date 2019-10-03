@@ -19,25 +19,6 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.tmobile.kardio.bean.Component;
 import com.tmobile.kardio.bean.EnvironmentMessages;
 import com.tmobile.kardio.bean.Region;
@@ -50,6 +31,17 @@ import com.tmobile.kardio.db.entity.AppRoleEntity;
 import com.tmobile.kardio.db.entity.ComponentEntity;
 import com.tmobile.kardio.db.entity.EnvironmentEntity;
 import com.tmobile.kardio.db.entity.HealthCheckEntity;
+import org.hibernate.*;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.*;
+import java.lang.InstantiationException;
 
 /**
  * Dao class to fetch all the Components and region wise status from database Implements RegionStatusDao

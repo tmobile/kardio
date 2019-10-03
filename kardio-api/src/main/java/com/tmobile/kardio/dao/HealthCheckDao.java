@@ -19,10 +19,10 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-
 import com.tmobile.kardio.bean.HealthCheckTypeVO;
 import com.tmobile.kardio.bean.HealthCheckVO;
+
+import java.util.List;
 
 /**
  * Interface to do operations on heath_check table Health Check Dao

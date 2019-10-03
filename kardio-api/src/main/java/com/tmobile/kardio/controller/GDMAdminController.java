@@ -19,40 +19,23 @@
  ******************************************************************************/
 package com.tmobile.kardio.controller;
 
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.tmobile.kardio.bean.AppFullName;
-import com.tmobile.kardio.bean.AppSession;
-import com.tmobile.kardio.bean.Component;
-import com.tmobile.kardio.bean.CounterDetails;
-import com.tmobile.kardio.bean.Counters;
-import com.tmobile.kardio.bean.EnvCounters;
-import com.tmobile.kardio.bean.Environment;
-import com.tmobile.kardio.bean.GDMResponse;
-import com.tmobile.kardio.bean.HealthCheckVO;
-import com.tmobile.kardio.bean.Subscription;
+import com.tmobile.kardio.bean.*;
 import com.tmobile.kardio.constants.Constants;
 import com.tmobile.kardio.dao.AppSessionDao;
 import com.tmobile.kardio.exceptions.AppSessionExpiredException;
 import com.tmobile.kardio.service.AdminService;
 import com.tmobile.kardio.service.RegionStatusServiceImpl;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * Controller which takes care of all the admin operations in SHD Main controller of Application

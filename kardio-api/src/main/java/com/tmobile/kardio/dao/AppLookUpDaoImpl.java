@@ -19,25 +19,19 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-
-import javax.persistence.Table;
-
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import com.tmobile.kardio.bean.AppFullName;
+import com.tmobile.kardio.constants.HQLConstants;
+import com.tmobile.kardio.db.entity.AppLookUpEntity;
+import com.tmobile.kardio.db.entity.ComponentEntity;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Repository;
 
-import com.tmobile.kardio.bean.AppFullName;
-import com.tmobile.kardio.constants.HQLConstants;
-import com.tmobile.kardio.db.entity.AppLookUpEntity;
-import com.tmobile.kardio.db.entity.ComponentEntity;
+import javax.persistence.Table;
+import java.util.List;
 
 /**
  * Operation on component table. Implements AppLookUpDao interface

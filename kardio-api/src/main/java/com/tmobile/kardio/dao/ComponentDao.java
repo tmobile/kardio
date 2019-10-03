@@ -19,13 +19,12 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-import java.util.Map;
-
 import com.tmobile.kardio.bean.Component;
 import com.tmobile.kardio.db.entity.ComponentEntity;
-import com.tmobile.kardio.db.entity.EnvironmentEntity;
 import com.tmobile.kardio.db.entity.HealthCheckEntity;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Interface for DAO on component table

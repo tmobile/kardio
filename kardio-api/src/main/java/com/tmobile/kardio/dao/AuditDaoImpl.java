@@ -19,14 +19,13 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
+import com.tmobile.kardio.bean.Audit;
+import com.tmobile.kardio.db.entity.AuditEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.tmobile.kardio.bean.Audit;
-import com.tmobile.kardio.db.entity.AuditEntity;
 
 @Repository
 public class AuditDaoImpl implements AuditDao {

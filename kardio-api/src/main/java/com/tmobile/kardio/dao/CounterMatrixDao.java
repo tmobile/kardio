@@ -19,9 +19,9 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-
 import com.tmobile.kardio.bean.Counters;
+
+import java.util.List;
 
 /**
  * Interface to access counter matrix Counter Matrix Dao

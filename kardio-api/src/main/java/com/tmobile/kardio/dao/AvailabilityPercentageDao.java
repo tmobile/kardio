@@ -19,10 +19,10 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
+import com.tmobile.kardio.bean.AvailabilityData;
+
 import java.text.ParseException;
 import java.util.List;
-
-import com.tmobile.kardio.bean.AvailabilityData;
 
 /**
  * Interface to access data in regards to availability aercentage

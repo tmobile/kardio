@@ -19,46 +19,24 @@
  ******************************************************************************/
 package com.tmobile.kardio.controller;
 
-import java.text.ParseException;
-import java.util.Date;
-import java.util.List;
-
-import javax.naming.NamingException;
-
+import com.tmobile.kardio.bean.*;
+import com.tmobile.kardio.constants.Constants;
+import com.tmobile.kardio.service.AdminService;
+import com.tmobile.kardio.service.RegionStatusService;
+import com.tmobile.kardio.util.LDAPAuthUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.tmobile.kardio.bean.ApiStatus;
-import com.tmobile.kardio.bean.AvailabilityData;
-import com.tmobile.kardio.bean.Component;
-import com.tmobile.kardio.bean.ComponentMessages;
-import com.tmobile.kardio.bean.ContainerStatus;
-import com.tmobile.kardio.bean.Counters;
-import com.tmobile.kardio.bean.Environment;
-import com.tmobile.kardio.bean.GDMResponse;
-import com.tmobile.kardio.bean.HistoryResponse;
-import com.tmobile.kardio.bean.Messages;
-import com.tmobile.kardio.bean.StatusResponse;
-import com.tmobile.kardio.bean.Subscription;
-import com.tmobile.kardio.bean.TpsLatency;
-import com.tmobile.kardio.bean.TpsLatencyHistory;
-import com.tmobile.kardio.bean.User;
-import com.tmobile.kardio.constants.Constants;
-import com.tmobile.kardio.service.AdminService;
-import com.tmobile.kardio.service.RegionStatusService;
-import com.tmobile.kardio.util.LDAPAuthUtil;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import javax.naming.NamingException;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
 
 /**
  * This main RestController handles the GET method requests Handles all the common request in SHD Controller for the

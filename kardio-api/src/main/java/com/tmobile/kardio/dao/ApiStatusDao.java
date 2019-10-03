@@ -19,10 +19,10 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
+import com.tmobile.kardio.bean.ApiStatus;
+
 import java.text.ParseException;
 import java.util.List;
-
-import com.tmobile.kardio.bean.ApiStatus;
 
 /**
  *  Dao Class to get the API status.

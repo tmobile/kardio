@@ -19,10 +19,10 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-
 import com.tmobile.kardio.bean.Environment;
 import com.tmobile.kardio.db.entity.EnvironmentEntity;
+
+import java.util.List;
 
 /**
  * Handles the Environment table operations

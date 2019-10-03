@@ -19,9 +19,13 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.text.ParseException;
-import java.util.List;
-
+import com.tmobile.kardio.bean.TpsLatency;
+import com.tmobile.kardio.bean.TpsLatencyHistory;
+import com.tmobile.kardio.constants.Constants;
+import com.tmobile.kardio.constants.HQLConstants;
+import com.tmobile.kardio.db.entity.K8sTpsLatencyHistoryEntity;
+import com.tmobile.kardio.db.entity.TpsServiceEntity;
+import com.tmobile.kardio.util.DaoUtil;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -30,13 +34,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tmobile.kardio.bean.TpsLatency;
-import com.tmobile.kardio.bean.TpsLatencyHistory;
-import com.tmobile.kardio.constants.Constants;
-import com.tmobile.kardio.constants.HQLConstants;
-import com.tmobile.kardio.db.entity.K8sTpsLatencyHistoryEntity;
-import com.tmobile.kardio.db.entity.TpsServiceEntity;
-import com.tmobile.kardio.util.DaoUtil;
+import java.text.ParseException;
+import java.util.List;
 
 @Repository
 public class K8sTpsLatencyDaoImpl implements K8sTpsLatencyDao {

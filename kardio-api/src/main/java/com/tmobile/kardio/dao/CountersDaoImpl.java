@@ -19,14 +19,12 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import com.tmobile.kardio.bean.CounterDetails;
+import com.tmobile.kardio.bean.Counters;
+import com.tmobile.kardio.bean.EnvCounters;
+import com.tmobile.kardio.constants.HQLConstants;
+import com.tmobile.kardio.db.entity.CounterEntity;
+import org.hibernate.*;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
@@ -34,11 +32,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tmobile.kardio.bean.CounterDetails;
-import com.tmobile.kardio.bean.Counters;
-import com.tmobile.kardio.bean.EnvCounters;
-import com.tmobile.kardio.constants.HQLConstants;
-import com.tmobile.kardio.db.entity.CounterEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Operations on Counter Table Implements CountersDao

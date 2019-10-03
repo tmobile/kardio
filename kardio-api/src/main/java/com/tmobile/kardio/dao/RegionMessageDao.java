@@ -19,10 +19,10 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-
 import com.tmobile.kardio.bean.ComponentMessages;
 import com.tmobile.kardio.bean.Messages;
+
+import java.util.List;
 
 /**
  * Interface to do operations for component messages Region History Dao

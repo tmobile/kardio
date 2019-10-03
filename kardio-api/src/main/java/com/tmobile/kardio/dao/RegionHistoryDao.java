@@ -19,9 +19,9 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.text.ParseException;
-
 import com.tmobile.kardio.bean.HistoryResponse;
+
+import java.text.ParseException;
 
 /**
  * To get region base history form database Region sHistory Dao

@@ -19,15 +19,14 @@
  ******************************************************************************/
 package com.tmobile.kardio.listners;
 
+import com.tmobile.kardio.prometheus.PrometheusMetricService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-
-import com.tmobile.kardio.prometheus.PrometheusMetricService;
 
 /**
  * Request listener for Prometheus
