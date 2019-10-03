@@ -19,15 +19,14 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.tmobile.kardio.bean.Component;
+import com.tmobile.kardio.bean.ComponentHistory;
+import com.tmobile.kardio.bean.HistoryResponse;
+import com.tmobile.kardio.bean.StatusHistory;
+import com.tmobile.kardio.constants.ComponentType;
+import com.tmobile.kardio.constants.Status;
+import com.tmobile.kardio.db.entity.ComponentEntity;
+import com.tmobile.kardio.db.entity.DaillyCompStatusEntity;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,14 +36,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tmobile.kardio.bean.Component;
-import com.tmobile.kardio.bean.ComponentHistory;
-import com.tmobile.kardio.bean.HistoryResponse;
-import com.tmobile.kardio.bean.StatusHistory;
-import com.tmobile.kardio.constants.ComponentType;
-import com.tmobile.kardio.constants.Status;
-import com.tmobile.kardio.db.entity.ComponentEntity;
-import com.tmobile.kardio.db.entity.DaillyCompStatusEntity;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * History page functionality. Implements RegionHistoryDao

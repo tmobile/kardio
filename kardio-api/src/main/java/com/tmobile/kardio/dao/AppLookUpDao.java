@@ -19,11 +19,11 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-
 import com.tmobile.kardio.bean.AppFullName;
 import com.tmobile.kardio.db.entity.AppLookUpEntity;
 import com.tmobile.kardio.db.entity.ComponentEntity;
+
+import java.util.List;
 
 /**
  * Interface for DAO on component table

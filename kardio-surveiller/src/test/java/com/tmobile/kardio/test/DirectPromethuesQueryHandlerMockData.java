@@ -30,7 +30,7 @@ import com.tmobile.kardio.surveiller.vo.CounterDetailVO;
 
 
 /**
- * @author U29842
+ * @author Arun Nair
  *
  */
 public class DirectPromethuesQueryHandlerMockData {

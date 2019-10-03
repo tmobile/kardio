@@ -19,10 +19,10 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.List;
-
 import com.tmobile.kardio.bean.Component;
 import com.tmobile.kardio.bean.StatusResponse;
+
+import java.util.List;
 
 /**
  * Interface to get region based status for components Region Status Dao

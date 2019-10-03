@@ -19,11 +19,11 @@
  ******************************************************************************/
 package com.tmobile.kardio.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Component to store the required details of a component VO for component data in dashboard

@@ -19,23 +19,18 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.tmobile.kardio.bean.AvailabilityData;
+import com.tmobile.kardio.constants.HQLConstants;
+import com.tmobile.kardio.constants.Region;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tmobile.kardio.bean.AvailabilityData;
-import com.tmobile.kardio.constants.HQLConstants;
-import com.tmobile.kardio.constants.Region;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Implements AvailabilityPercentageDao to access availability percentage in the database

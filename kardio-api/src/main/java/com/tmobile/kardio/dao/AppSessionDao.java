@@ -19,10 +19,10 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.Map;
-
 import com.tmobile.kardio.bean.User;
 import com.tmobile.kardio.db.entity.AppSessionEntity;
+
+import java.util.Map;
 
 /**
  * Interface to perform data access on app_session table

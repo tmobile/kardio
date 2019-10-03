@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2019 T-Mobile USA, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
  * of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -19,17 +19,17 @@
  ******************************************************************************/
 package com.tmobile.kardio;
 
-import static org.mockito.Mockito.when;
-
-import java.util.Date;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tmobile.kardio.bean.AppSession;
 import com.tmobile.kardio.service.AdminService;
 
+import java.util.Date;
+
+import static org.mockito.Mockito.when;
+
 public class TestUtils {
-	public static String mockAppSession(AdminService adminService) {
-		String authToken = "auth_token";
+    public static String mockAppSession(AdminService adminService) {
+        String authToken = "auth_token";
         AppSession session = new AppSession();
         session.setAppSessionId(1);
         session.setAuthToken(authToken);
@@ -38,9 +38,9 @@ public class TestUtils {
         session.setAdmin(true);
         session.setSessionStartTime(new Date());
         when(adminService.getAppSession(authToken)).thenReturn(session);
-		return authToken;
-	}
-    
+        return authToken;
+    }
+
     public static String asJsonString(final Object obj) {
         try {
             final ObjectMapper mapper = new ObjectMapper();

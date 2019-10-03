@@ -25,7 +25,7 @@ package com.tmobile.kardio.surveiller.vo;
 import java.util.Map;
 
 /**
- * @author U29842
+ * @author Arun Nair
  *
  */
 public class ServiceLabelVO {

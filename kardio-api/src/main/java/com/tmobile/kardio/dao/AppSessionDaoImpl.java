@@ -19,25 +19,20 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import com.tmobile.kardio.bean.User;
+import com.tmobile.kardio.constants.HQLConstants;
+import com.tmobile.kardio.db.entity.AppRoleEntity;
+import com.tmobile.kardio.db.entity.AppSessionEntity;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.tmobile.kardio.bean.User;
-import com.tmobile.kardio.constants.HQLConstants;
-import com.tmobile.kardio.db.entity.AppRoleEntity;
-import com.tmobile.kardio.db.entity.AppSessionEntity;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * DB operations for app_Session table Implementation of AppSessionDao
