@@ -19,9 +19,9 @@
  ******************************************************************************/
 package com.tmobile.kardio.bean;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.List;
 
 /**
  * Stores the history of the status based on date Status for History tab

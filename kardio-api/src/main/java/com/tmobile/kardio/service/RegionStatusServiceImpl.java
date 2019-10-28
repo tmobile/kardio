@@ -19,17 +19,17 @@
  ******************************************************************************/
 package com.tmobile.kardio.service;
 
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.tmobile.kardio.bean.*;
+import com.tmobile.kardio.constants.Constants;
+import com.tmobile.kardio.dao.*;
+import com.tmobile.kardio.db.entity.*;
+import com.tmobile.kardio.exceptions.AppSessionExpiredException;
+import com.tmobile.kardio.exceptions.ValidationFailedException;
+import com.tmobile.kardio.restservice.RestCommunicationHandler;
+import com.tmobile.kardio.util.MailSenderUtil;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,53 +38,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.tmobile.kardio.bean.ApiStatus;
-import com.tmobile.kardio.bean.AppSession;
-import com.tmobile.kardio.bean.AvailabilityData;
-import com.tmobile.kardio.bean.Component;
-import com.tmobile.kardio.bean.ComponentMessages;
-import com.tmobile.kardio.bean.ContainerStatus;
-import com.tmobile.kardio.bean.Counters;
-import com.tmobile.kardio.bean.Environment;
-import com.tmobile.kardio.bean.HistoryResponse;
-import com.tmobile.kardio.bean.K8sContainerStatus;
-import com.tmobile.kardio.bean.Messages;
-import com.tmobile.kardio.bean.StatusResponse;
-import com.tmobile.kardio.bean.Subscription;
-import com.tmobile.kardio.bean.TpsLatency;
-import com.tmobile.kardio.bean.TpsLatencyHistory;
-import com.tmobile.kardio.bean.User;
-import com.tmobile.kardio.constants.Constants;
-import com.tmobile.kardio.dao.AlertSubscribeDao;
-import com.tmobile.kardio.dao.ApiStatusDao;
-import com.tmobile.kardio.dao.AppSessionDao;
-import com.tmobile.kardio.dao.AvailabilityPercentageDao;
-import com.tmobile.kardio.dao.ComponentDao;
-import com.tmobile.kardio.dao.ContainerStatusDao;
-import com.tmobile.kardio.dao.CounterMatrixDao;
-import com.tmobile.kardio.dao.EnvironmentDao;
-import com.tmobile.kardio.dao.K8sApiStatusDao;
-import com.tmobile.kardio.dao.K8sContainerStatusDao;
-import com.tmobile.kardio.dao.K8sPodsStatusDao;
-import com.tmobile.kardio.dao.K8sTpsLatencyDao;
-import com.tmobile.kardio.dao.RegionHistoryDao;
-import com.tmobile.kardio.dao.RegionMessageDao;
-import com.tmobile.kardio.dao.RegionStatusDao;
-import com.tmobile.kardio.dao.TpsLatencyDao;
-import com.tmobile.kardio.dao.TpsLatencyStatusDao;
-import com.tmobile.kardio.db.entity.AlertSubscriptionEntity;
-import com.tmobile.kardio.db.entity.AppSessionEntity;
-import com.tmobile.kardio.db.entity.ComponentEntity;
-import com.tmobile.kardio.db.entity.ContainerStatusEntity;
-import com.tmobile.kardio.db.entity.HealthCheckEntity;
-import com.tmobile.kardio.db.entity.K8sPodsContainersEntity;
-import com.tmobile.kardio.exceptions.AppSessionExpiredException;
-import com.tmobile.kardio.exceptions.ValidationFailedException;
-import com.tmobile.kardio.restservice.RestCommunicationHandler;
-import com.tmobile.kardio.util.MailSenderUtil;
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.util.*;
 
 /**
  * Service layer class to handle Dao methods

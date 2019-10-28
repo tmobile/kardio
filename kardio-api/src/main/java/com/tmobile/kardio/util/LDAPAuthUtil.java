@@ -19,23 +19,9 @@
  ******************************************************************************/
 package com.tmobile.kardio.util;
 
-import static javax.naming.directory.SearchControls.SUBTREE_SCOPE;
-
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Set;
-
-import javax.naming.Context;
-import javax.naming.NamingEnumeration;
-import javax.naming.NamingException;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import javax.naming.directory.SearchControls;
-import javax.naming.directory.SearchResult;
-
+import com.tmobile.kardio.bean.User;
+import com.tmobile.kardio.dao.AppSessionDao;
+import com.tmobile.kardio.exceptions.LoginFailedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +29,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
-import com.tmobile.kardio.bean.User;
-import com.tmobile.kardio.dao.AppSessionDao;
-import com.tmobile.kardio.exceptions.LoginFailedException;
+import javax.naming.Context;
+import javax.naming.NamingEnumeration;
+import javax.naming.NamingException;
+import javax.naming.directory.*;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Set;
+
+import static javax.naming.directory.SearchControls.SUBTREE_SCOPE;
 
 /**
  * 

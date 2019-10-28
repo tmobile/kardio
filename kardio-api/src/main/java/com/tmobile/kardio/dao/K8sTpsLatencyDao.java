@@ -19,11 +19,11 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.text.ParseException;
-import java.util.List;
-
 import com.tmobile.kardio.bean.TpsLatency;
 import com.tmobile.kardio.bean.TpsLatencyHistory;
+
+import java.text.ParseException;
+import java.util.List;
 
 
 public interface K8sTpsLatencyDao {

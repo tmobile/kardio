@@ -25,6 +25,8 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
+import com.tmobile.kardio.surveiller.constants.SurveillerConstants;
+
 /**
  * Getting values from the config.properties file. The file must be present in the working directory.
  * Singleton class.
@@ -45,9 +47,13 @@ public class PropertyUtil {
 		if(instance != null){
 			return instance;
 		}
+		String configFileName = System.getenv(SurveillerConstants.CONFIG_FILE_ENV_VAR);
+		if(configFileName == null || configFileName.trim().length() == 0){
+			configFileName = "config.properties"; // Default Path
+		}
         try{
         	instance = new PropertyUtil();
-        	InputStream in = new FileInputStream("config.properties");
+        	InputStream in = new FileInputStream(configFileName);
         	instance.prop.load(in);
         }catch(Exception ex){
         	logger.error("Initialization failed config.properties not found",ex);

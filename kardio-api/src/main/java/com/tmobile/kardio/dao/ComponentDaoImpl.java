@@ -19,24 +19,6 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Repository;
-
 import com.tmobile.kardio.bean.Component;
 import com.tmobile.kardio.constants.ComponentType;
 import com.tmobile.kardio.constants.HQLConstants;
@@ -44,6 +26,18 @@ import com.tmobile.kardio.db.entity.AppLookUpEntity;
 import com.tmobile.kardio.db.entity.ComponentEntity;
 import com.tmobile.kardio.db.entity.ComponentTypeEntity;
 import com.tmobile.kardio.db.entity.HealthCheckEntity;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Repository;
+
+import javax.annotation.PostConstruct;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Operation on component table. Implements ComponentDao interface

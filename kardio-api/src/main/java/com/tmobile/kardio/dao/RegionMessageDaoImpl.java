@@ -19,23 +19,6 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TimeZone;
-
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.tmobile.kardio.bean.ComponentMessages;
 import com.tmobile.kardio.bean.Messages;
 import com.tmobile.kardio.constants.HQLConstants;
@@ -43,6 +26,16 @@ import com.tmobile.kardio.db.entity.ComponentEntity;
 import com.tmobile.kardio.db.entity.ComponentMessageEntity;
 import com.tmobile.kardio.db.entity.EnvironmentEntity;
 import com.tmobile.kardio.db.entity.RegionEntity;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Updates the Message for component Implements RegionMessageDao

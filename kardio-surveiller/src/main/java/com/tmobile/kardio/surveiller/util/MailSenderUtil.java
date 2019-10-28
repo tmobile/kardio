@@ -30,8 +30,10 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -233,11 +235,26 @@ public class MailSenderUtil {
 	public static void sendMail(String messageText, String toMail, String subject){
 		
 		Properties props = new Properties();
-		props.put("mail.smtp.auth", "false");
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", propertyUtil.getValue(SurveillerConstants.MAIL_SERVER_IP));
-		props.put("mail.smtp.port", propertyUtil.getValue(SurveillerConstants.MAIL_SERVER_PORT));
-		Session session = Session.getInstance(props);
+        props.put("mail.smtp.host", propertyUtil.getValue(SurveillerConstants.MAIL_SERVER_IP));
+        props.put("mail.smtp.port", propertyUtil.getValue(SurveillerConstants.MAIL_SERVER_PORT));
+        Session session = null;
+        String mailAuthUserName = propertyUtil.getValue(SurveillerConstants.MAIL_SERVER_USERNAME);
+        String mailAuthPassword = propertyUtil.getValue(SurveillerConstants.MAIL_SERVER_PASSWORD);
+		if (mailAuthUserName != null && mailAuthUserName.length() > 0 && mailAuthPassword != null
+				&& mailAuthPassword.length() > 0) {
+			props.put("mail.smtp.auth", "true");
+			Authenticator auth = new Authenticator() {
+				public PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(mailAuthUserName, mailAuthPassword);
+				}
+			};
+			session = Session.getDefaultInstance(props, auth);
+		} else {
+			props.put("mail.smtp.auth", "false");
+			session = Session.getInstance(props);
+		}
+		
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(propertyUtil.getValue(SurveillerConstants.MAIL_FROM_ADDRESS) ));

@@ -19,20 +19,14 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import com.tmobile.kardio.bean.HealthCheckParamVO;
+import com.tmobile.kardio.bean.HealthCheckTypeVO;
+import com.tmobile.kardio.bean.HealthCheckVO;
+import com.tmobile.kardio.constants.ComponentType;
+import com.tmobile.kardio.constants.HQLConstants;
+import com.tmobile.kardio.db.entity.*;
+import com.tmobile.kardio.exceptions.ValidationFailedException;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,18 +35,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Repository;
 
-import com.tmobile.kardio.bean.HealthCheckParamVO;
-import com.tmobile.kardio.bean.HealthCheckTypeVO;
-import com.tmobile.kardio.bean.HealthCheckVO;
-import com.tmobile.kardio.constants.ComponentType;
-import com.tmobile.kardio.constants.HQLConstants;
-import com.tmobile.kardio.db.entity.ComponentEntity;
-import com.tmobile.kardio.db.entity.EnvironmentEntity;
-import com.tmobile.kardio.db.entity.HealthCheckEntity;
-import com.tmobile.kardio.db.entity.HealthCheckParamEntity;
-import com.tmobile.kardio.db.entity.HealthCheckTypeEntity;
-import com.tmobile.kardio.db.entity.RegionEntity;
-import com.tmobile.kardio.exceptions.ValidationFailedException;
+import javax.annotation.PostConstruct;
+import java.sql.SQLException;
+import java.util.*;
 
 /**
  * Implements interface HealthCheckDao To query and do CRUD opeerations on health_check table

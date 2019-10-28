@@ -19,15 +19,14 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
+import com.tmobile.kardio.constants.ComponentType;
+import com.tmobile.kardio.db.entity.ComponentTypeEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Repository;
-
-import com.tmobile.kardio.constants.ComponentType;
-import com.tmobile.kardio.db.entity.ComponentTypeEntity;
 
 @Repository
 @PropertySource("classpath:application.properties")

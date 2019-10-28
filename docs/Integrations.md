@@ -73,6 +73,12 @@ Email notifications are available to alert the users of any changes in the healt
 
 	mail.server.ip=10.15.20.25
 	mail.server.port=25
+	mail.from.email=noreply@kardio.com
+
+If the SMTP server is using authentication, the below optional configurations must be included in the properties file.
+
+	mail.server.auth.username=abc@kardio.com
+	mail.server.auth.password=mypwd
 
 ##  LDAP Integration
 Kardio allows access to the dashboard pages without authentication. The Admin functionality and the ability to add/edit messages on the dashboards are protected by authentication.

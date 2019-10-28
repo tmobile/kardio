@@ -19,26 +19,21 @@
  ******************************************************************************/
 package com.tmobile.kardio.util;
 
-import java.io.BufferedInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Properties;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.net.ssl.HttpsURLConnection;
-
+import com.tmobile.kardio.bean.Subscription;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
-import com.tmobile.kardio.bean.Subscription;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
 
 /**
  * 
@@ -68,6 +63,12 @@ public class MailSenderUtil {
 
     @Value("${mail.server.port}")
     private String mailServerPort;
+    
+    @Value("${mail.server.auth.username}")
+    private String mailAuthUserName;
+    
+    @Value("${mail.server.auth.password}")
+    private String mailAuthPassword;
 
     @Value("${mail.from.email}")
     private String fromEmailAddress;
@@ -125,12 +126,24 @@ public class MailSenderUtil {
      * @param Message
      */
     public void sendMail(String messageText, String toMail, String mailSubject) {
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "false");
-        props.put("mail.smtp.starttls.enable", "true");
+		Properties props = new Properties();
+		props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", mailServerIP);
         props.put("mail.smtp.port", mailServerPort);
-        Session session = Session.getInstance(props);
+        Session session = null;
+		if (mailAuthUserName != null && mailAuthUserName.length() > 0 && mailAuthPassword != null
+				&& mailAuthPassword.length() > 0) {
+			props.put("mail.smtp.auth", "true");
+			Authenticator auth = new Authenticator() {
+				public PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication(mailAuthUserName, mailAuthPassword);
+				}
+			};
+			session = Session.getDefaultInstance(props, auth);
+		} else {
+			props.put("mail.smtp.auth", "false");
+			session = Session.getInstance(props);
+		}
 
         try {
             Message message = new MimeMessage(session);

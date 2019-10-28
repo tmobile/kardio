@@ -25,6 +25,7 @@ package com.tmobile.kardio.surveiller.constants;
  */
 public class SurveillerConstants {
 	private SurveillerConstants() {}
+	public static final String CONFIG_FILE_ENV_VAR = "SURVEILLER_CONFIG_FILE";
 	
 	public static final String CONFIG_DB_DRIVER_CLASS = "driver.class";
 	public static final String CONFIG_DB_URL = "db.url";
@@ -43,6 +44,8 @@ public class SurveillerConstants {
 	public static final String MAIL_FROM_ADDRESS = "mail.from.email";
 	public static final String MAIL_SERVER_IP = "mail.server.ip";
 	public static final String MAIL_SERVER_PORT = "mail.server.port";
+	public static final String MAIL_SERVER_USERNAME = "mail.server.auth.username";
+	public static final String MAIL_SERVER_PASSWORD = "mail.server.auth.password";
 	public static final String MAIL_TASK_EXCEPTION_MAIL_TO = "mail.task.exception.mail.to";
 	public static final String PROMETHEUS_PUSH_ENABLED = "prometheus.push.enabled";
 	public static final String PROMETHEUS_PUSH_GATEWAY_URL = "prometheus.push.gateway.url";

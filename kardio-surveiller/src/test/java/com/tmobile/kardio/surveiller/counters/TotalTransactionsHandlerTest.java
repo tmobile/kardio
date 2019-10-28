@@ -35,7 +35,7 @@ import mockit.Mock;
 import mockit.MockUp;
 
 /**
- * @author U29842
+ * @author Arun Nair
  *
  */
 public class TotalTransactionsHandlerTest extends ProxyUtilTest {

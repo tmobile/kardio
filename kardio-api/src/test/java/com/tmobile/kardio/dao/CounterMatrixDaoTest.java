@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2019 T-Mobile USA, Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
  * of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -19,38 +19,26 @@
  ******************************************************************************/
 package com.tmobile.kardio.dao;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.tmobile.kardio.TestDaoService;
+import com.tmobile.kardio.TestDataProvider;
+import com.tmobile.kardio.bean.Counters;
+import com.tmobile.kardio.db.entity.CounterEntity;
+import com.tmobile.kardio.db.entity.CounterMetricEntity;
+import com.tmobile.kardio.db.entity.EnvCounterEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tmobile.kardio.ComponentStatusApplication;
-import com.tmobile.kardio.TestDaoService;
-import com.tmobile.kardio.TestDataProvider;
-import com.tmobile.kardio.bean.Counters;
-import com.tmobile.kardio.dao.CounterMatrixDao;
-import com.tmobile.kardio.dao.EnvironmentDao;
-import com.tmobile.kardio.db.entity.CounterEntity;
-import com.tmobile.kardio.db.entity.CounterMetricEntity;
-import com.tmobile.kardio.db.entity.EnvCounterEntity;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-
-@WebAppConfiguration
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {ComponentStatusApplication.class})
-public class CounterMatrixDaoTest {
+public class CounterMatrixDaoTest extends AbstractDaoTest {
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -59,82 +47,82 @@ public class CounterMatrixDaoTest {
 
     @Autowired
     private TestDaoService daoService;
-    
+
     @Autowired
     private EnvironmentDao envDao;
-    
-//	@Test
+
+    //	@Test
     @Transactional
     @Rollback(true)
     public void testGetCounters() {
-    	
-    	Session session = sessionFactory.openSession();
+
+        Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         CounterEntity ce = daoService.createCounterEntity(session);
-    	
-    	EnvCounterEntity ece = daoService.createEnvCounterEntity(session, ce);
-    	
-    	CounterMetricEntity cme = daoService.createCounterMetricEntity(session, ece);
 
-    	Set<CounterMetricEntity> cmes = new HashSet<CounterMetricEntity>();
-    	cmes.add(cme);
+        EnvCounterEntity ece = daoService.createEnvCounterEntity(session, ce);
+
+        CounterMetricEntity cme = daoService.createCounterMetricEntity(session, ece);
+
+        Set<CounterMetricEntity> cmes = new HashSet<CounterMetricEntity>();
+        cmes.add(cme);
         ece.setCountMetric(cmes);
         ece.setPlatform(TestDataProvider.getPlatform());
-    	session.save(ece);
+        session.save(ece);
 
-    	Set<EnvCounterEntity> eces = new HashSet<EnvCounterEntity>();
-    	eces.add(ece);
-    	ce.setEnvCounter(eces);
-    	session.save(ce);
-    	
+        Set<EnvCounterEntity> eces = new HashSet<EnvCounterEntity>();
+        eces.add(ece);
+        ce.setEnvCounter(eces);
+        session.save(ce);
+
         tx.commit();
         session.close();
-        
+
         List<Counters> counters = counterMatrixDao.getCounters(TestDataProvider.getPlatform());
-        Assert.assertEquals("Counter size does not match",  TestDaoService.counterID-1, counters.size());
+        Assert.assertEquals("Counter size does not match", TestDaoService.counterID - 1, counters.size());
         Counters counter = counters.get(0);
-        
+
         Assert.assertEquals("Counter name does not match", ce.getCounterName(), counter.getCounterName());
 //        Assert.assertEquals("Description does not match", ce.getCounterDesc(), counter.getCounterDesc()); TODO: Description not returned.
         Assert.assertEquals("Position does not match", ce.getPosition(), counter.getPosition());
         Assert.assertEquals("Metric value does not match", cme.getMetricVal(), counter.getMetricVal().floatValue(), 0.0);
     }
-	
-	@Test
+
+    @Test
     @Transactional
     @Rollback(true)
     public void testGetEnvCounters() {
-    	String envName = "getenvcounter";
-		daoService.createEnvironment(envName, 0);
-		
-    	Session session = sessionFactory.openSession();
+        String envName = "getenvcounter";
+        daoService.createEnvironment(envName, 0);
+
+        Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
         CounterEntity ce = daoService.createCounterEntity(session);
-    	
-    	EnvCounterEntity ece = daoService.createEnvCounterEntity(session, ce);
-    	
-    	CounterMetricEntity cme = daoService.createCounterMetricEntity(session, ece);
 
-    	Set<CounterMetricEntity> cmes = new HashSet<CounterMetricEntity>();
-    	cmes.add(cme);
+        EnvCounterEntity ece = daoService.createEnvCounterEntity(session, ce);
+
+        CounterMetricEntity cme = daoService.createCounterMetricEntity(session, ece);
+
+        Set<CounterMetricEntity> cmes = new HashSet<CounterMetricEntity>();
+        cmes.add(cme);
         ece.setCountMetric(cmes);
         ece.setEnvironment(envDao.getEnvironmentFromName(envName));
-    	session.save(ece);
+        session.save(ece);
 
-    	Set<EnvCounterEntity> eces = new HashSet<EnvCounterEntity>();
-    	eces.add(ece);
-    	ce.setEnvCounter(eces);
-    	session.save(ce);
-    	
+        Set<EnvCounterEntity> eces = new HashSet<EnvCounterEntity>();
+        eces.add(ece);
+        ce.setEnvCounter(eces);
+        session.save(ce);
+
         tx.commit();
         session.close();
-        
-        List<Counters> counters = counterMatrixDao.getEnvironmentCounters(envName,TestDataProvider.getPlatform());
-      //  Assert.assertEquals("Counter size does not match",  TestDaoService.counterID, counters.size());
+
+        List<Counters> counters = counterMatrixDao.getEnvironmentCounters(envName, TestDataProvider.getPlatform());
+        //  Assert.assertEquals("Counter size does not match",  TestDaoService.counterID, counters.size());
         Counters counter = counters.get(0);
-        
+
         Assert.assertEquals("Counter name does not match", ce.getCounterName(), counter.getCounterName());
 //        Assert.assertEquals("Description does not match", ce.getCounterDesc(), counter.getCounterDesc()); TODO: Description not returned.
         Assert.assertEquals("Position does not match", ce.getPosition(), counter.getPosition());
