@@ -57,17 +57,6 @@ import com.tmobile.kardio.surveiller.vo.StatusVO;
  */
 public class KubernetesBackUpTask {
 
-/*	private static final String K8S_PROPERTY_ANNOTATIONS = "annotations";
-	private static final String K8S_PROPERTY_MATCH_LABELS = "matchLabels";
-	private static final String K8S_PROPERTY_SELECTOR = "selector";
-	private static final String K8S_PROPERTY_SPEC = "spec";
-	private static final String K8S_PROPERTY_RELEASE = "release";
-	private static final String K8S_PROPERTY_LABELS = "labels";
-	private static final String K8S_PROPERTY_NAME = "name";
-	private static final String K8S_PROPERTY_NAMESPACE = "namespace";
-	private static final String K8S_PROPERTY_METADATA = "metadata";
-	public static final String K8S_PROPERTY_ITEMS = "items";
-	*/
 	private static final Logger logger = Logger.getLogger(KubernetesBackUpTask.class);
 	
 	private KubernetesBackUpTask() {}
@@ -255,16 +244,20 @@ public class KubernetesBackUpTask {
 	      *CASE:: We are using nginx controller,below is the logic to find the app is using path based routing or not
 	      * If the "nginx.ingress.kubernetes.io/rewrite-target" is present in the annotation then app has path based routing */
 	     boolean isPathNeeded = false;
+	     String schemeValue = null;
          if(annotNode == null){
          	logger.info("The annotations node is null for the Ingress - "+ingressName+" in the namespace - "+ namespace);
          	isPathNeeded = false;
          }else{
          	isPathNeeded = annotNode.get("nginx.ingress.kubernetes.io/rewrite-target") == null? false : true;
+         	schemeValue = annotNode.get("nginx.ingress.kubernetes.io/ssl-passthrough") == null ? null : "https";
          }
          
          JsonNode specIngNode = ingressNode.get("spec");
      	 JsonNode tlsNode = specIngNode.get("tls");
-     	 String schemeValue = tlsNode == null ? "http" : "https";
+     	 if(schemeValue == null){
+      		schemeValue = tlsNode == null ? "http" : "https";
+      	 }
      	 String hostUrlPath = null;
          hostUrlPath =  getHostUrlAndPath(specIngNode, healthCheckPort, isPathNeeded);
          if(hostUrlPath == null){
@@ -288,6 +281,9 @@ public class KubernetesBackUpTask {
     	while(rulesNodeItr.hasNext()){
     		JsonNode rulesNode = rulesNodeItr.next();
     		JsonNode hostNode = rulesNode.get("host");
+    		if(hostNode == null){
+    			return null;
+    		}
     		String host = hostNode.asText();
     		if(!isPathNeeded){
     			return host;
@@ -351,7 +347,7 @@ public class KubernetesBackUpTask {
         	}else{
 		        JsonNode ingClasstNode = annotNode.get("kubernetes.io/ingress.class");
 	            if(ingClasstNode == null || !ingClasstNode.getTextValue().equals("nginx-internal")){
-	            	logger.info("The hostname node is "+ingClasstNode.getTextValue()+ "for the Ingress - "+ingressName+" in the namespace - "+ namespace);
+	            	logger.info("The hostname node is "+ingClasstNode+ "for the Ingress - "+ingressName+" in the namespace - "+ namespace);
 	            	continue;
 	            }
         	}   
@@ -453,6 +449,7 @@ public class KubernetesBackUpTask {
 			kubeMessage = "Kubernetes Status - No replicas Available";
 		}else if(numReplicas.intValue() > 0 && numUnAvlReplicas == null){
 			status = Status.UP;
+			kubeMessage = "Kubernetes Status - Number of Replicas = "+numReplicas+ "; Available Replicas = "+numAvlReplicas;
 		}else if(numReplicas.intValue() > 0 && numAvlReplicas == null){
 			status = Status.DOWN;
 			kubeMessage = "Kubernetes Status - Number of Replicas = "+numReplicas+ "; Unavailable Replicas = "+numUnAvlReplicas;
@@ -460,7 +457,6 @@ public class KubernetesBackUpTask {
 			status = Status.DOWN;
 			kubeMessage = "Kubernetes Status - Number of Replicas = "+numReplicas+ "; Available Replicas = "+numAvlReplicas;
 		}
-		//FIXME :: Needs to fix the scenario where replica, availablereplica & nonavailablereplica having same count
 		if(status == null){
 			logger.info("The doCheckDeploymentReplicas check - status is null for the deployment - " + depName + " in the namespace - "+ namespace);
 			return;
