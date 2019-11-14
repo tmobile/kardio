@@ -47,7 +47,7 @@ public class HealthCheckTest {
 
 		MockUp<DBQueryUtil> dbMock = new MockUp<DBQueryUtil>() {
 			@Mock
-			public List<HealthCheckVO> getSurveillerDetailsOfComponent(){
+			public List<HealthCheckVO> getSurveillerDetailsOfComponent(boolean isDummy){
 				List<HealthCheckVO> result = new ArrayList<HealthCheckVO>();
 				HealthCheckVO hc = new HealthCheckVO();
 				hc.setHealthCheckTypeClassName("com.tmobile.kardio.surveiller.handler.URLOpenableHandler");
