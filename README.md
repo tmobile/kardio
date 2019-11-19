@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/tmobile/kardio.svg?branch=master)](https://travis-ci.com/tmobile/kardio)
+[![Gitter](https://github.com/tmobile/pacbot/blob/master/wiki/images/chat.svg)](https://gitter.im/TMO-OSS/kardio)
 
 ![KARDIO](./docs/images/kardio.png)
-[![Gitter](https://github.com/tmobile/pacbot/blob/master/wiki/images/chat.svg)](https://gitter.im/TMO-OSS/kardio)
 
 
 # Introduction
