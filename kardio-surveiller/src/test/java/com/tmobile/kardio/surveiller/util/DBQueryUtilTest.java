@@ -26,8 +26,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -373,7 +375,10 @@ public class DBQueryUtilTest extends ProxyUtilTest{
     	EnvCounterEntity ece = daoService.createEnvCounterEntity();
     	final int environmentCounterId=1;
     	final float counterMerticValue=2;
-    	DBQueryUtil.addCounterMertic(environmentCounterId, counterMerticValue);
+    	Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.SECOND, 00);
+		Timestamp currDate = new java.sql.Timestamp(calendar.getTimeInMillis());
+    	DBQueryUtil.addCounterMertic(environmentCounterId, counterMerticValue,currDate);
     }
     
     @Test
@@ -744,7 +749,7 @@ public class DBQueryUtilTest extends ProxyUtilTest{
     public void testGetSurveillerDetailsOfComponent() throws SerialException, SQLException {
     	int del_ind_c=0;
     	HealthCheckEntity hce = daoService.createHealthCheckEntity(del_ind_c,cte,region_id,TestDataProvider.getMesosPlatform());
-    	List<HealthCheckVO> result = DBQueryUtil.getSurveillerDetailsOfComponent();
+    	List<HealthCheckVO> result = DBQueryUtil.getSurveillerDetailsOfComponent(false);
        // Assert.assertEquals("Size not Matching",TestDaoService.healthCheckID,result.size());
   	
     }

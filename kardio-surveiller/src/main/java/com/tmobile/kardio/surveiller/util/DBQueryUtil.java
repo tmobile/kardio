@@ -104,13 +104,17 @@ public class DBQueryUtil {
 	 * 
 	 * @return
 	 */
-	public static List<HealthCheckVO> getSurveillerDetailsOfComponent() {
+	public static List<HealthCheckVO> getSurveillerDetailsOfComponent(boolean isDummyHealth) {
 		HashMap<Long,HealthCheckVO> healthCheckVOMap = new HashMap<Long,HealthCheckVO>();
 		Session session = HibernateConfig.getSessionFactory().getCurrentSession();		
 		Transaction txn = session.beginTransaction();
 		Criteria healthCheckCriteria = session.createCriteria(HealthCheckEntity.class);
 		healthCheckCriteria.add(Restrictions.eq("delInd", 0));
-		//healthCheckCriteria.add(Restrictions.ne("healthCheckType.healthCheckTypeId", HealthCheckType.Dummy.getHealthCheckTypeId()));
+		if(isDummyHealth){
+			healthCheckCriteria.add(Restrictions.eq("healthCheckType.healthCheckTypeId", HealthCheckType.DUMMY.getHealthCheckTypeId()));
+		}else{
+			healthCheckCriteria.add(Restrictions.ne("healthCheckType.healthCheckTypeId", HealthCheckType.DUMMY.getHealthCheckTypeId()));
+		}
 		@SuppressWarnings("unchecked")
 		List<HealthCheckEntity> checkEntities = healthCheckCriteria.list();
 		for(HealthCheckEntity entity : checkEntities) {
@@ -1024,10 +1028,7 @@ public class DBQueryUtil {
 	 * @param regionID
 	 * 
 	 */
-	public static void addCounterMertic(final int environmentCounterId, final float counterMerticValue) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.SECOND, 00);
-		Timestamp currDate = new java.sql.Timestamp(calendar.getTimeInMillis());
+	public static void addCounterMertic(final int environmentCounterId, final float counterMerticValue, Timestamp currDate) {
 		Session session = HibernateConfig.getSessionFactory().getCurrentSession();
 		Transaction txn = session.beginTransaction();
 		CounterMetricEntity counterMetric = new CounterMetricEntity();

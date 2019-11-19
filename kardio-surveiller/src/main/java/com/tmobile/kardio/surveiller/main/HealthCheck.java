@@ -54,7 +54,7 @@ public class HealthCheck {
 		
 		ExecutorService executor = Executors.newFixedThreadPool(Integer.parseInt(PropertyUtil.getInstance().getValue(SurveillerConstants.CONFIG_SURVEILLER_THREAD_COUNT)));//creating a pool 
         
-		List<HealthCheckVO> healthCheckVOs = DBQueryUtil.getSurveillerDetailsOfComponent();
+		List<HealthCheckVO> healthCheckVOs = DBQueryUtil.getSurveillerDetailsOfComponent(false);
 		for(HealthCheckVO healthCheckVO:healthCheckVOs){
 			ClassLoader classLoader = Surveiller.class.getClassLoader();
 		    @SuppressWarnings("unchecked")

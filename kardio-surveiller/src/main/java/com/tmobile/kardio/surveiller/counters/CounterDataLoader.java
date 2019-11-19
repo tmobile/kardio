@@ -19,6 +19,8 @@
  ******************************************************************************/
 package com.tmobile.kardio.surveiller.counters;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.naming.ConfigurationException;
@@ -46,6 +48,9 @@ public class CounterDataLoader {
 		ProxyUtil.setProxy();
 		ProxyUtil.disableCertificates();
 		List<CounterDetailVO> listCounterDetails = DBQueryUtil.getCounterDetails();
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.SECOND, 00);
+		Timestamp currDate = new java.sql.Timestamp(calendar.getTimeInMillis());
 		for(CounterDetailVO counterDetails: listCounterDetails){
 		   try{
 				int counterMetricTypeId = counterDetails.getCounterMetricTypeId();
@@ -61,7 +66,7 @@ public class CounterDataLoader {
 					throw new ConfigurationException("No class configured for counterMetricTypeId = " + counterMetricTypeId);
 				}		
 				counterDetails.setMetricValue(metricHandler.getCounterMerticValue(counterDetails, listCounterDetails));
-				DBQueryUtil.addCounterMertic(counterDetails.getEnvironmentCounterId(), counterDetails.getMetricValue());
+				DBQueryUtil.addCounterMertic(counterDetails.getEnvironmentCounterId(), counterDetails.getMetricValue(), currDate);
 				/**
 				 * Code Changes to store Counter Metric History
 				 */

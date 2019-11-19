@@ -84,7 +84,7 @@ public class CommonsUtil {
      */
     public static void sendMailForChangedStatus(List<HealthCheckVO> statusChangedList) throws SQLException {
     	//Create VO with more details
-    	List<HealthCheckVO> allHealthCheckVOs = DBQueryUtil.getSurveillerDetailsOfComponent();
+    	List<HealthCheckVO> allHealthCheckVOs = DBQueryUtil.getSurveillerDetailsOfComponent(true);
     	List<HealthCheckVO> compListForMail = new ArrayList<HealthCheckVO>();
     	for(HealthCheckVO healthCheckVO:allHealthCheckVOs){
     		for(HealthCheckVO statusChangedVo:statusChangedList){
