@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jacoco.version>0.7.5.201505241946</jacoco.version>
-		<jackson.version>2.10.0</jackson.version>
+		<jackson.version>2.12.7.1</jackson.version>
 		<codehaus.jackson.version>1.9.13</codehaus.jackson.version>
 	</properties>
 	
